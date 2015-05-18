@@ -43,7 +43,7 @@ Python可能比其他流行的编程语言具有更多的web框架。
 要真正的欣赏Django，你需要撇开表象来看本质。它启发你同时让你不知所措。如果你已经熟悉它，或许就想要跳过这一节。
 
 下图：在一个典型的Django应用中web请求是如何被处理的。  
-图略
+![django request](http://ww1.sinaimg.cn/mw1024/6184c0e3gw1ertof4w7ckj20m50d8dhi.jpg)
 
 前面的图片展示了从一个访客的浏览器到Django应用并返回的一个web请求的简单历程。如下是数字标识的路径：
 
