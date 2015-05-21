@@ -1,4 +1,4 @@
-# -Django-Design-Patterns-and-Best-Practices
+# Django-Design-Patterns-and-Best-Practices
 中文名：《Django 设计模式与最佳实践》  
 英文原版：https://www.packtpub.com/web-development/django-design-patterns-and-best-practices  
 作者：Arun Ravindran  
