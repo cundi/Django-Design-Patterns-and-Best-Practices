@@ -98,14 +98,14 @@ Django最强大的一点是拥有庞大的第三方生态系统。
 
     $ git clone https://github.com/DjangoPatternsBook/superbook.git
     $ cd superbook
-    $ pip install -r requirements.txt”
+    $ pip install -r requirements.txt
 
 如果你想看一看已完成的SuperBook网站，只要运行migrate并启动测试服务器就行了：  
     
     $ cd final
     $ python manage.py migrate
     $ python manage.py createsuperuser
-    $ python manage.py runserver”  
+    $ python manage.py runserver  
 
 在Django1.7中，migrate命令已经被syncdb命令取代。我们也需要明确地调用creteasuperuser命令来创建一个超级用户，这样我们就可以访问admin了。  
 
