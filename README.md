@@ -4,7 +4,8 @@
 作者：Arun Ravindran  
 出版日期：March 2015  
 特色：Easily build maintainable websites with powerful and relevant Django design patterns  
-级别：Mastering 
+级别：Mastering   
+页数：Paperback 222 pages
 
 目录预览
 ***********************************
