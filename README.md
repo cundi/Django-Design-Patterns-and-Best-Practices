@@ -1,12 +1,3 @@
-# Django-Design-Patterns-and-Best-Practices
-中文名：《Django 设计模式与最佳实践》  
-英文原版：https://www.packtpub.com/web-development/django-design-patterns-and-best-practices  
-作者：Arun Ravindran  
-出版日期：March 2015  
-特色：Easily build maintainable websites with powerful and relevant Django design patterns  
-级别：Mastering   
-页数：Paperback 222 pages  
-
 -------------------------  
 ## 简介
 
@@ -22,7 +13,18 @@
 * 保持文章原文，不作修改。
 * 明确署名，即至少注明 `作者：cundi` 字样以及文章的原始链接。
 
-如需商业合作，[请直接联系作者](https://github.com/cundi/Web.Development.with.Django.Cookbook/issues/3)。
+如需商业合作，[请直接联系作者](https://github.com/cundi/Web.Development.with.Django.Cookbook/issues/3)。  
+
+
+# Django-Design-Patterns-and-Best-Practices
+中文名：《Django 设计模式与最佳实践》  
+英文原版：https://www.packtpub.com/web-development/django-design-patterns-and-best-practices  
+作者：Arun Ravindran  
+出版日期：March 2015  
+特色：Easily build maintainable websites with powerful and relevant Django design patterns  
+级别：Mastering   
+页数：Paperback 222 pages  
+
 
 目录预览
 ***********************************
