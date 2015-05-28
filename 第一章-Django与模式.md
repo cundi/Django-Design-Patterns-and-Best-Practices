@@ -1,5 +1,5 @@
 
-第一章 Django和模式
+第一章 Django与模式
 ------------------   
 
 在这一章，我们讨论以下话题： 
@@ -50,7 +50,7 @@ Due to its humble origins as an internal tool, Django had a lot of Lawrence 􏰈
 
 However, the 􏰀ost significant refactoring effort that Django developers had to undertake was called "Removing the Magic." This ambitious project involved cleaning up all the warts Django had accumulated over the years, including a lot of magic (an informal term for implicit features) and replacing them with a more natural and explicit Pythonic code. For example, the model classes used to be imported from a magic module called django.models.*, rather than directly importing them from the models.py 􏰀odule they were defined in.  
 
-At that time, Django had about a hundred thousand lines of code, and it was a significant rewrite of the 􏰅PI. 􏰚n May 􏰛, 􏰜􏰤􏰤􏰦, these changes, al􏰀ost the si􏰄e of a small book, were integrated into Django's development version trunk and released as Django release 􏰤.􏰧􏰨. This was a significant step toward the Django 􏰛.􏰤 ���  ���ilestone.
+At that time, Django had about a hundred thousand lines of code, and it was a significant rewrite of the 􏰅PI. 􏰚n May 􏰛, 􏰜􏰤􏰤􏰦, these changes, al􏰀ost the si􏰄e of a small book, were integrated into Django's development version trunk and released as Django release 􏰤.􏰧􏰨. This was a significant step toward the Django 􏰛.􏰤 ���  ���ilestone.
 
 ###Django坚持做得更好
 Every year, conferences called DjangoCons are held across the world for Django developers to meet and interact with each other. They have an adorable tradition
