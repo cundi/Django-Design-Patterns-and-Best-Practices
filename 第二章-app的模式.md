@@ -108,6 +108,8 @@ A good mockup can give 80 percent of customer experience with less than 20 perce
 
 Whichever approach you take, it is best to stop and think—"Which are the different ways in which I can i􏰀ple􏰀ent this? What are the trade􏰉offs? Which factors are 􏰀ore i􏰀portant in our context? Finally, which approach is the best?􏰎  
 
+不乱你选择的方式是哪一种，最好是停下来想一想——“”
+
 Experienced Django developers look at the overall project in different ways. 􏰊ticking to the DRY principle 􏰐or so􏰀eti􏰀es because they get la􏰓y􏰑, they think 􏰌􏰎Have I seen this functionality before? For instance, can this social login feature be implemented using a third-party package such as django-all-auth?􏰎
 If they have to write the app themselves, they start thinking of various design patterns in the hope of an elegant design. However, they first need to break down a project at the top level into apps。  
 
@@ -174,7 +176,7 @@ While preparing a development environment, make sure that you have the following
 ```
   
 
-## SuperBook-你的任务，你应该选择去接受
+## SuperBook-少年来吧，接受你的这个任务
 This book believes in a practical and pragmatic approach of demonstrating Django design patterns and the best practices through examples. For consistency, all our examples will be about building a social network project called SuperBook.  
 
 SuperBook focusses exclusively on the niche and often neglected market segment of people with exceptional super powers. You are one of the developers in a tea􏰀 comprised of other developers, web designers, a marketing manager, and a project manager.  
@@ -190,12 +192,20 @@ The reaction to Python 3 in the Django community was rather mixed. Even though t
 
 For this book, Python 3 was ideal for the following reasons:  
 
+就本书来说，Python 3 由于以下几个原因看来它是最理想的：  
+
 ```
 • Better syntax􏰕 This fixes a lot of ugly syntaxes, such as izip, xrange, and __unicode__, with the cleaner and more straightforward zip, range, and __str__.
+
 • Sufficient third-party support: Of the top 200 third-party libraries, more than 80 percent have Python 3 support.
+
 • No legacy code: We are creating a new project, rather than dealing with legacy code that needs to support an older version.
+不存在遗留的代码：我们创建一个新的项目，而不是来处理需要支持旧版本代码。 
+
 • Default in modern platforms: This is already the default Python interpreter in Arch Linux. Ubuntu and Fedora plan to complete the switch in a future release.
+
 • It is easy: From a Django development point of view, there are very few changes, and they can all be learnt in a few minutes.
+使用方便：站在Django开发的观点来看，其改变非常微小，所有变更的地方学起来也很快。
 ```
   
 The last point is important. Even if you are using Python 2, this book will serve you fine. Read 􏰆ppendix 􏰆 to understand the changes. You will need to make only minimal adjustments to backport the example code.  
@@ -204,6 +214,8 @@ The last point is important. Even if you are using Python 2, this book will serv
 本节是SuperBook项目的安装说明，它包含在本书中使用的所有代码实例。要为最新的安装注释检查项目的README文件。推荐你创建一个新的目录，superbook，首先包含虚拟环境，项目源码。  
 
 Ideally, every Django project should be in its own separate virtual environment. This makes it easy to install, update, and delete packages without affecting other applications. In Python 3.4, using the built-in venv module is recommended since it also installs pip by default:  
+
+理论上，每一个Django项目都应该有自己的虚拟环境。使用虚拟环境可以让Django的安装，升级显得很轻松，而且删除包也不会影响到其他的应用。在Python 3.4中，建议使用内建的venv模块，因为它默认也安装了pip：  
 
 ```python
 $ python3 -m venv sbenv
@@ -216,32 +228,34 @@ do confir􏰀 if this is correct for your operating syste􏰀 and distribution.
 
 The last export command might not be required in some cases. If running pip freeze lists your system packages rather than being empty, then you will need to enter this line.  
 
->### 提示
-*开始Django项目之前，创建一个新的虚拟环境*  
-接着，从GitHub克隆项目例子，并安装依赖：  
+>#### 提示
+开始Django项目之前，创建一个新的虚拟环境  
 
->```python
+接下来，从GitHub克隆项目例子，并安装依赖：  
+
+```python
     $ git clone https://github.com/DjangoPatternsBook/superbook.git
     $ cd superbook
     $ pip install -r requirements.txt
-```  
+```
 
 如果你想看一看已完成的SuperBook网站，只要运行migrate并启动测试服务器就行了：  
 
-```python    
+```python
     $ cd final
     $ python manage.py migrate
     $ python manage.py createsuperuser
-    $ python manage.py runserver  
-```  
+    $ python manage.py runserver
+```
 
 在Django1.7中，migrate命令已经被syncdb命令取代。我们也需要明确地调用creteasuperuser命令来创建一个超级用户，这样我们就可以访问admin了。  
 
 你可以浏览`http://127.0.0.1:8000`或者在终端指明URL，随便玩玩这个网站。  
-  
-  
+
 ##总结  
 Beginners often underestimate the importance of a good requirements-gathering process. At the same time, it is important not to get bogged down with the details, because programming is inherently an exploratory process. The most successful projects spend the right amount of time preparing and planning before develop􏰀ent so that it yields the 􏰀axi􏰀u􏰀 benefits.  
+
+新手总是低估了一个好的请求获取流程的重要性。于此同时，重要的是不要被细节所束缚，因为从本质来说，编程就是一个探究的过程。
 
 We discussed many aspects of designing an application, such as creating interactive mockups or dividing it into reusable components called apps. We also discussed the steps to set up SuperBook, our example project.  
 
