@@ -90,7 +90,7 @@ a MacBook (Interviewer: this interview was conducted over chat). Plus, I have th
 ```
 >E􏰋verything is easy. It doesn't take a superhu􏰀an effort to figure it out. Thanks for your time, Acorn.  
 
-## HTML建模
+## 为HTML建模
 在构建web应用的前几天，像Photoshop和Flash这样的工具做到像素级别的模型效果使用是非常广泛的。 They are hardly recommended or used anymore.  
 
 Giving a native and consistent experience across smartphones, tablets, laptops, and other platforms is now considered more important than getting that pixel-perfect look. In fact, most web designers directly create layouts on HTML.  
@@ -114,8 +114,8 @@ Experienced Django developers look at the overall project in different ways. �
 If they have to write the app themselves, they start thinking of various design patterns in the hope of an elegant design. However, they first need to break down a project at the top level into apps。  
 
 
-### 将一个项目分离为多个app
-Django的应用称做*project*。一个项目由多个应用或者*apps*组成。应用是具有一组特性的Python包。  
+### 将一个项目分离为多个应用
+Django的应用称做**project**。一个项目由多个应用或者**apps**组成。应用是一组拥有特定功能的Python包。  
 
 理论上说，每个app都必须是可以重复使用的。你可以按照自己的需要创建尽可能多的app。绝对不要害怕添加跟多的app，或者重构一个已经存在的应用到多个app。一个典型的Djanog项目包含15到20个app。  
 
