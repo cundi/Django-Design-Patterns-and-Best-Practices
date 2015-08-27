@@ -105,57 +105,81 @@ admin应用足够的聪明，因此它可以自动地从模型发现非常多东
 
 ```
     • list_display: This option shows the model instances in a tabular form. Instead of using the model's __str__ representation, it shows each field mentioned as a separate sortable column. This is ideal if you like to see more than one attribute of your model.  
+    - list-display: 该选项在一个表格形式的表单中该显示模型实例。它显示每个独立可排序列的字段。如果你希望看到模型的多个属性，该选项是非常理想的。  
 
     • search_fields: This option shows a search box above the list. Any search term entered would be searched against the mentioned fields. Hence, only text fields such as CharField or TextField can be mentioned here.  
+    - search_fields: 该选项在列表上面显示一个搜索框。任何的输入的搜索项都可以搜索到对应的引用字段。因此，仅有CharField或者TextField这样的文本字段被引用。  
 
-    • ordering: This option takes precedence over your model's default ordering. It is useful if you prefer a different ordering in your admin screen.
+    • ordering: This option takes precedence over your model's default ordering. It is useful if you prefer a different ordering in your admin screen. 
+    - ordering: 该选项优先于模型的默认顺序。在admin后台管理中选择一个不同的顺序时，会很有用的。
 ```
 
 图片：略  
 
 The preceding screenshot shows the following insets:  
-    • Inset 1: Without str or Meta attributes
-    • Inset 2: With enhanced model meta attributes
+前面的截图插入内容：  
+
+    • Inset 1: Without str or Meta attributes 
+    - 插入内容1: 不使用str或者Meta属性  
+    • Inset 2: With enhanced model meta attributes 
+    - 插入内容2: 使用增强的模型meta属性  
     • Inset 3: With customized ModelAdmin
+    - 插入内容3: 使用定制的ModelAdmin  
 
 Here, we have only mentioned a subset of commonly used admin options. Certain kinds of sites use the admin interface heavily. In such cases, it is highly recommended that you go through and understand the admin part of the Django documentation.  
 
+这里我们仅仅提到了一个常用的amdin选项子集。某些类型的网站会重度地使用admin接口。在这样地情况下，这里强烈建议你彻彻底底搞明白Django文档的admin部分。  
+
 ## 不应该让所有人都成为admin
 Since admin interfaces are so easy to create, people tend to misuse them. Some give early users admin access by merely turning on their 'staff' flag. Soon such users begin making feature requests, mistaking the admin interface to be the actual application interface.  
+由于admin接口的太容易生成了，而人们也容易滥用它们。
 
 Unfortunately, this is not what the admin interface is for. As the flag suggests, it is an internal tool for the staff to enter content. It is production-ready but not really intended for the end users of your website.
 It is best to use admin for simple data entry. For example, in a project I had reviewed, every teacher was made an admin for a Django application managing university courses. This was a poor decision since the admin interface confused the teachers.  
+
+不幸的是，这并不是admin接口的用途所在。
 
 The workflow for scheduling a class involves checking the schedules of other teachers and students. Using the admin interface gives them a direct view of the database. There is very little control over how the data gets modified by the admin.  
 
 So, keep the set of people with admin access as small as possible. Make changes via admin sparingly, unless it is simple data entry such as adding an article's content.  
 
-###Best Practice
+###Best Practice 最佳实践
 Don't give admin access to end users.  
+不要让admin访问中断用户。  
 
 Ensure that all your admins understand the data inconsistencies that can arise from making changes through the admin. If possible, record manually or use apps, such as django-audit-loglog that can keep a log of admin changes made for future reference.  
+
+确保所有的管理员都理解了数据的不一致能够被抛出，
 
 In the case of the university example, we created a separate interface for teachers, such as a course builder. These tools will be visible and accessible only if the user has a teacher profile.  
 
 Essentially, rectifying most misuses of the admin interface involves creating more powerful tools for certain sets of users. However, don't take the easy (and wrong) path of granting them admin access.  
 
-##Admin interface customizations
+##Admin interface customizations Admin接口的定制
 The out-of-box admin interface is quite useful to get started. Unfortunately, most people assume that it is quite hard to change the Django admin and leave it as it is. In fact, the admin is extremely customizable and its appearance can be drastically changed with minimal effort.  
 
 ##Changing the heading
 Many users of the admin interface might be stumped by the heading—Django administration. It might be more helpful to change this to something customized such as MySite admin or something cool such as SuperBook Secret Area.  
 
 It is quite easy to make this change. Simply add this line to your site's urls.py:   
+应用该变更非常简单。简单的添加下面的行到站点到urls.py：  
+
     admin.site.site_header = "SuperBook Secret Area"
 
-##Changing the base and stylesheets
+##Changing the base and stylesheets 改变基本模板和样式表
 Almost every admin page is extended from a common base template named admin/base_site.html. This means that with a little knowledge of HTML and CSS, you can make all sorts of customizations to change the look and feel of the admin interface.  
+
+几乎所有的admin页面都扩展自叫做admin/base_site.html都公共基本模板。这意味着只需用到少量都HTML和CSS的知识，因此你可以定制所有的排序以改变admin接口的外观和感觉。  
 
 Simply create a directory called admin in any templates directory. Then, copy the base_site.html file from the Django source directory and alter it according to your needs. If you don't know where the templates are located, just run the following commands within the Django shell:  
 
-    >>> from os.path import join
-    >>> from django.contrib import admin
-    >>> print(join(admin.__path__[0], "templates", "admin"))
+先简单地在任意地模板目录中创建一个名称为admin的目录。然后，从Django源目录复制文件base_site.html，并按照自己的需要做相应的变更。如果你不知道模板的位置，那么在Django shell中运行下面的命令就是了：  
+
+```python
+>>> from os.path import join
+>>> from django.contrib import admin
+>>> print(join(admin.__path__[0], "templates", "admin"))
+```
 
 For an example of customizing the admin base template, you can change the font of the entire admin interface to "Special Elite" from Google Fonts, which is great for giving a mock-serious look. You will need to add an admin/base_site.html file in one of your template's directories with the following contents:  
 
