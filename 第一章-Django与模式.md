@@ -58,20 +58,20 @@ of giving a semi-humorous keynote on "why Django sucks." This could be a member 
 
 Over the years, it is amazing how Django developers took these criticisms positively and mitigated them in subsequent releases. Here is a short summary of the improvements corresponding to what once used to be a shortcoming in Django and the release they were resolved in:  
 
-```
-• New form-handling library (Django 0.96)
-• Decoupling admin from models (Django 1.0)
-• Multiple database support (Django 1.2)
-• Managing static files better 􏰋Django 􏰛.􏰥􏰌
-• Better time zone support (Django 1.4)
-• Customizable user model (Django 1.5)
-• Better transaction handling (Django 1.6)
-• Built-in database migrations (Django 1.7)
-```
+
+- New form-handling library (Django 0.96)
+- Decoupling admin from models (Django 1.0)
+- Multiple database support (Django 1.2)
+- Managing static files better 􏰋Django 􏰛.􏰥􏰌
+- Better time zone support (Django 1.4)
+- Customizable user model (Django 1.5)
+- Better transaction handling (Django 1.6)
+- Built-in database migrations (Django 1.7)
+
   
 
 ### Django是如何工作的？
-要真正的欣赏Django，你需要撇开表象来看本质。它启发你同时让你不知所措。如果你已经熟悉它，或许就想要跳过这一节。
+要真正的欣赏Django，你需要撇开表象来看本质。它启发你得同时也让会让你不知所措。如果你已经比较了解它，你可以选择跳过这一节。
 
 下图：在Django应用中一个典型的web请求是如何被处理的。  
 ![how-web-requests-in-django](https://cloud.githubusercontent.com/assets/10941075/7853567/c70e90c0-0542-11e5-87c5-5128a5685365.png)
@@ -130,11 +130,10 @@ In reality, the patterns were written primarily for object-oriented programming 
 
 The 􏰜􏰥 patterns have been broadly classified by their type as follows􏰂：  
 
-```
-• Creational Patterns: These include Abstract Factory, Builder Pattern, Factory Method, Prototype Pattern, and Singleton Pattern
-• Structural Patterns: These include Adapter Pattern, Bridge Pattern, Composite Pattern, Decorator Pattern, Facade Pattern, Flyweight Pattern, and Proxy Pattern
-• Behavioral Patterns: These include Chain of Responsibility, Command Pattern, Interpreter Pattern, Iterator Pattern, Mediator Pattern, Memento Pattern, Observer Pattern, State Pattern, Strategy Pattern, Template Pattern, and Visitor Pattern
-```
+- Creational Patterns: These include Abstract Factory, Builder Pattern, Factory Method, Prototype Pattern, and Singleton Pattern
+- Structural Patterns: These include Adapter Pattern, Bridge Pattern, Composite Pattern, Decorator Pattern, Facade Pattern, Flyweight Pattern, and Proxy Pattern
+- Behavioral Patterns: These include Chain of Responsibility, Command Pattern, Interpreter Pattern, Iterator Pattern, Mediator Pattern, Memento Pattern, Observer Pattern, State Pattern, Strategy Pattern, Template Pattern, and Visitor Pattern
+
   
 While a detailed explanation of each pattern would be beyond the scope of this book, it would be interesting to identify some of these patterns in Django itself:  
 
@@ -155,7 +154,8 @@ Today, MVC is a very popular pattern in web application frameworks. Beginners of
 
 The answer is both yes and no. The MVC pattern advocates the decoupling of
 the presentation layer from the application logic. For instance, while designing
-an online game website API, you might present a game's high scores table as an HTML, 􏰪ML, or co􏰀􏰀a􏰃separated 􏰋􏰖􏰆􏰊􏰌 file. However, its underlying 􏰀odel class would be designed independent of how the data would be finally presented.
+an online game website API, you might present a game's high scores table as an HTML, 􏰪ML, or co􏰀􏰀a􏰃separated 􏰋􏰖􏰆􏰊􏰌 file. However, its underlying 􏰀odel class would be designed independent of how the data would be finally presented.  
+
 MVC is very rigid about what models, views, and controllers do. However, Django takes a much more practical view to web applications. Due to the nature of the HTTP protocol, each request for a web page is independent of any other request. Django's framework is designed like a pipeline to process each request and prepare a response.  
 
 Django calls this the Model-Template-View (MTV) architecture. There is separation of concerns between the database interfacing classes (Model), request-processing classes 􏰋􏰊iew􏰌, and a te􏰀plating language for the final presentation 􏰋Te􏰀plate􏰌.
@@ -178,7 +178,7 @@ In 2002, Martin Fowler wrote Patterns of Enterprise Application Architecture, wh
 Unlike the GoF book, which described design patterns, Fowler's book was about architectural patterns. Hence, they describe patterns at a much higher level of abstraction and are largely programming language agnostic.
 Fowler's patterns are organized as follows:  
 
-```
+
 • Domain Logic Patterns: These include Domain Model, Transaction Script, Service Layer , and Table Module
 • Data Source Architectural Patterns: These include Row Data Gateway, Table Data Gateway, Data Mapper, and Active Record
 • Object-Relational Behavioral Patterns: These include Identity Map, Unit of Work, and Lazy Load
@@ -190,9 +190,10 @@ Field, Serialized LOB, Embedded Value, Inheritance Mappers, Single Table Inherit
 • Offline Concurrency Patterns: These include Coarse Grained Lock, Implicit Lock, Optimistic 􏰚f􏰁ine Lock, and Pessi􏰀istic 􏰚f􏰁ine Lock
 • Session State Patterns: These include Database Session State, Client Session State, and Server Session State
 • Base Patterns: These include Mapper, Gateway, Layer Supertype, Registry, Value Object, Separated Interface, Money, Plugin, Special Case, Service Stub, and Record Set
-```
+
   
-Almost all of these patterns would be useful to know while architecting a Django application. In fact, Fowler's website at http://martinfowler.com/eaaCatalog/ has an excellent catalog of these patterns. I highly recommend that you check them out.
+Almost all of these patterns would be useful to know while architecting a Django application. In fact, Fowler's website at http://martinfowler.com/eaaCatalog/ has an excellent catalog of these patterns. I highly recommend that you check them out.  
+
 Django also implements a number of these patterns. The following table lists a few of them:  
 
 Django中的模式与此对比：  
@@ -235,31 +236,33 @@ The heading is the pattern name. If it is a well-known pattern, the commonly use
 ### 鉴审模式
 Despite their near universal usage, Patterns have their share of criticism too. The most common arguments against them are as follows:  
 
-```
-• Patterns compensate for the missing language features: Peter Norvig found that 16 of the 23 patterns in Design Patterns were 'invisible or simpler' in Lisp. Considering Python's introspective facilities and first􏰃class functions, this 􏰀ight as well be the case for Python too.
-• Patterns repeat best practices: Many patterns are essentially formalizations of best practices such as separation of concerns and could seem redundant.
-• Patterns can lead to over-engineering: Implementing the pattern might be less efficient and excessive co􏰀pared to a si􏰀pler solution.
+尽管它们近乎于通用，模式共享也有它们的审鉴共享。它们的最常见参数如下： 
 
-```
-尽管它们近乎于通用，模式共享也有它们的审鉴共享。它们的最常见参数如下：  
-略
+- Patterns compensate for the missing language features: Peter Norvig found that 16 of the 23 patterns in Design Patterns were 'invisible or simpler' in Lisp. Considering Python's introspective facilities and first􏰃class functions, this 􏰀ight as well be the case for Python too.
+- Patterns repeat best practices: Many patterns are essentially formalizations of best practices such as separation of concerns and could seem redundant.
+- Patterns can lead to over-engineering: Implementing the pattern might be less efficient and excessive co􏰀pared to a si􏰀pler solution. 
 
 ### 如何使用模式  
 While some of the previous criticisms are quite valid, they are based on how patterns are misused. Here is some advice that can help you understand how best to use design patterns:
   
-```
-• Don't implement a pattern if your language supports a direct solution
-• Don't try to retro􏰃fit everything in ter􏰀s of patterns
-• Use a pattern only if it is the most elegant solution in your context
-• Don't be afraid to create new patterns
-```
+
+- Don't implement a pattern if your language supports a direct solution
+- Don't try to retro􏰃fit everything in ter􏰀s of patterns
+- 
+- Use a pattern only if it is the most elegant solution in your context  
+- 在开发环境中且仅当解决方法为最简练时使用模式  
+- Don't be afraid to create new patterns  
+- 不要害怕创建新模式  
+
 
 >#### 最佳实践  
 In addition to design patterns, there might be a recommended approach to solving a problem. In Django, as with Python, there might be several ways to solve a problem but one idiomatic approach among those.  
-
+除了设计模式之外，还是存在其他推荐的方法来解决一个问题。在Django中，因为使用的语言就是Python，所以我们就有
 
 ### Python之禅和Django的设计哲学  
 Generally, the Python community uses the term 'Pythonic' to describe a piece of idiomatic code. It typically refers to the principles laid out in 'The Zen of Python'. Written like a poem, it is extremely useful to describe such a vague concept.
+
+通常来说，Python社区使用术语“Python范儿”来描述一段编写手法地道的代码。我们通常参照“Python之禅”中出现的原则。就像写诗歌一样，它在描述一个模糊的概念时及其有用。  
   
 >Try entering import this in a Python prompt to view 'The Zen of Python'.  
 
@@ -267,10 +270,7 @@ Furthermore, Django developers have crisply documented their design philosophies
 
 While the document describes the thought process behind how Django was designed, it is also useful for developers using Django to build applications. Certain principles such as Don't Repeat Yourself (DRY), loose coupling, and tight cohesion can help you write more maintainable and idiomatic Django applications.  
 
-Django or Python best practices suggested by this book would be formatted in the following manner:
-  
->##### Best Practice:
-Use BASE_DIR in settings.py and avoid hard-coding directory names.  
+Django or Python best practices suggested by this book would be formatted in the following manner:  
 
 >#### 最佳实践：  
 在settings.py中使用BASE_DIR，避免硬编码目录名称。  
@@ -278,7 +278,11 @@ Use BASE_DIR in settings.py and avoid hard-coding directory names.
 ## 总结  
 In this chapter, we looked at why people choose Django over other web frameworks, its interesting history, and how it works. We also examined design patterns, popular pattern collections, and best practices.  
 
+本章，我们浏览了为什么人们选择Django而不是其他的Web框架，以及它的发展史，和Django的工作原理。我们也验证了设计模式，流行的模式集合，以及最佳实践。  
+
 In the next chapter, we will take a look at the first few steps in the beginning of a Django project such as gathering requirements, creating mockups, and setting up the project.  
+
+在下一章，我们会学习Django项目中开始的头几个步骤，比如获取请求，模型建模，以及项目配置。
 
 
 --------------------
