@@ -43,14 +43,18 @@ admin能够让你的团队在同一时间内添加内容，不间断开发。只
 >Soon, they were all at Steve's office staring at his screen. "See, I told you there is no beacon on the front page," said Evan. "We are still developing that feature." "Wait," said Steve. "Let me login through a non-staff account."
 In a few seconds, the page refreshed and an animated red beacon prominently appeared at the top. "That's the beacon I was talking about!" exclaimed Captain Obvious. "Hang on a minute," said Steve. He pulled up the source files for the new features deployed earlier that day. A glance at the beacon feature branch code made it clear what went wrong:  
 
+几秒钟之后，页面重新刷新，然后一个重要的红色提醒出现在顶部。“这就是我提到的信标！”装傻队长说道。“稍等一下啊，”斯蒂夫说到。他从前些天部署的新功能拉取了原文件。稍微看下信标功能的分支代码能够搞清楚到底哪里出问题了：  
+
 >
 ```
     if switch_is_active(request, 'beacon') and not
-    request.user.is_staff():
+      request.user.is_staff():
            # Display the beacon
 ```
 
 >"Sorry everyone," said Steve. "There has been a logic error. Instead of turning this feature on only for staff, we inadvertently turned it on for everyone but staff. It is turned off now. Apologies for any confusion."  
+
+>“各位不好意思，”斯蒂夫说道。“这里出现了一个逻辑错误。我们一时疏忽就将该功能的开启开放给了所有人，而不是仅有站点注册用户来开启。现在我把这个功能给关闭了。对于因此而引起的混乱我表示歉意。”
 
 >"So, there was no emergency?" said Captain with a disappointed look. Hexa put an arm on his shoulder and said "I am afraid not, Captain." Suddenly, there was a loud crash and everyone ran to the hallway. A man had apparently landed in the office through one of the floor-to-ceiling glass walls. Shaking off shards of broken glass, he stood up. "Sorry, I came as fast as I could," he said, "Am I late to the party?" Hexa laughed. "No, Blitz. Been waiting for you to join," she said.  
 
@@ -187,6 +191,8 @@ Simply create a directory called admin in any templates directory. Then, copy th
 
 For an example of customizing the admin base template, you can change the font of the entire admin interface to "Special Elite" from Google Fonts, which is great for giving a mock-serious look. You will need to add an admin/base_site.html file in one of your template's directories with the following contents:  
 
+例如，定制admin的基础模板，你可以改变admin接口的整个字体为谷歌字体“Special Elite”，谷歌的这个字体看上去非常的厚重。你需要使用以下内容在项目中的模板目录中添加一个文件admin/base_site.html。  
+
 ```python
     {% extends "admin/base.html" %}
     {% block extrastyle %}
@@ -200,6 +206,8 @@ For an example of customizing the admin base template, you can change the font o
 ```
 
 This adds an extra stylesheet for overriding the font-related styles and will be applied to every admin page.  
+
+该代码通过添加一个附加的样式表来重写与字体相关的样式，而且附加的样式会应用于每个admin的页面。  
 
 ## Adding a Rich Text Editor for WYSIWYG editing
 ## 添加富文本编辑器
@@ -257,23 +265,35 @@ Unsurprisingly, the most common request for admin customization is whether it ca
 
 Rather than overriding all the admin templates yourself, these packages provide ready-to-use Bootstrap-themed templates. They are easy to install and deploy. Being based on Bootstrap, they are responsive and come with a variety of widgets and components.  
 
+这些包提供了开箱即用的基于Bootstrap主题的模板，而不是你自己去重新编写所有的admin模板。因为基于Bootstrap，所以它们拥有响应式功能，而且包含了多种部件和组件。  
+
 ## Complete overhauls
 ## 彻底检查
 There have been attempts made to completely reimagine the admin interface too. Grappelli is a very popular skin that extends the Django admin with new features, such as autocomplete lookups and collapsible inlines. With django-admin-tools, you get a customizable dashboard and menu bar.  
 
+admin接口也已经在我们的尝试下完全的重写了。Grappelli是一个非常流行皮肤，它能够利用功能扩展Django admin，比如自动查询和折叠嵌套。使用django-admin-tools，你可以获得一个可定制的面板和工具栏。  
+
 There have been attempts made to completely rewrite the admin, such as django-admin2 and nexus, which did not gain any significant adoption. There is even an official proposal called AdminNext to revamp the entire admin app. Considering the size, complexity, and popularity of the existing admin, any such effort is expected to take a significant amount of time.  
+
+这里也有完全重写admin的尝试，比如django-admin2和nexus，它们不会着重使用的。
 
 ## Protecting the admin
 ## 保护admin
 The admin interface of your site gives access to almost every piece of data stored. So, don't leave the metaphorical gate lightly guarded. In fact, one of the only telltale signs that someone runs Django is that, when you navigate to http://example. com/admin/, you will be greeted by the blue login screen.  
 
+网站的admin接口几乎访问了每一块存储的数据。因此，不要留下缺少保护的后门。实际上，
+
 In production, it is recommended that you change this location to something less obvious. It is as simple as changing this line in your root urls.py:  
+
+在生产环境中，我们建议你将这个地址改为不太显眼的地址。在项目的根urls.py中尽可能简单地变更该行：  
 
 ```python
 url(r'^secretarea/', include(admin.site.urls)),
 ```
 
 A slightly more sophisticated approach is to use a dummy admin site at the default location or a honeypot (see the django-admin-honeypot package). However, the best option is to use HTTPS for your admin area since normal HTTP will send all the data in plaintext over the network.  
+
+一个稍微更加精巧的做法是利用
 
 Check your web server documentation on how to set up HTTPS for admin requests. On Nginx, it is quite easy to set this up and involves specifying the SSL certificate locations. Finally, redirect all HTTP requests for admin pages to HTTPS, and you can sleep more peacefully.  
 
