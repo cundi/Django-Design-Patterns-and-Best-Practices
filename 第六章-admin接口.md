@@ -143,8 +143,12 @@ Here, we have only mentioned a subset of commonly used admin options. Certain ki
 ## 不应该让所有人都成为admin
 Since admin interfaces are so easy to create, people tend to misuse them. Some give early users admin access by merely turning on their 'staff' flag. Soon such users begin making feature requests, mistaking the admin interface to be the actual application interface.  
 
+因为admin接口很轻松就可以创建了，所以有可能被滥用。
+
 Unfortunately, this is not what the admin interface is for. As the flag suggests, it is an internal tool for the staff to enter content. It is production-ready but not really intended for the end users of your website.
 It is best to use admin for simple data entry. For example, in a project I had reviewed, every teacher was made an admin for a Django application managing university courses. This was a poor decision since the admin interface confused the teachers.  
+
+不幸的是这不是admin接口的本来目的。
 
 The workflow for scheduling a class involves checking the schedules of other teachers and students. Using the admin interface gives them a direct view of the database. There is very little control over how the data gets modified by the admin.  
 
@@ -308,7 +312,7 @@ Solution: Use feature flags to selectively enable or disable features after depl
 
 解决方法：在部署之后，使用功能标识有选择性地启动或者禁用功能。  
 
-### Problem details
+### Problem details 问题细节
 Rolling out frequent bug fixes and new features to production is common today. Many of these changes are unnoticed by users. However, new features that have significant impact in terms of usability or performance ought to be rolled out in a phased manner. In other words, deployment should be decoupled from a release.  
 
 Simplistic release processes activate new features as soon as they are deployed. This can potentially have catastrophic results ranging from user issues (swamping your support resources) to performance issues (causing downtime).  
@@ -326,9 +330,9 @@ that a new feature broke anything in production or increased load on the databas
 
 Feature flags can be used for various other situations (the following examples use django-waffle):  
 
-    • Trials:
-        A feature flag can also be conditionally active for certain users.
-        These can be your own staff or certain early adopters than you may be targeting as follows:
+- Trials:
+    A feature flag can also be conditionally active for certain users.
+    These can be your own staff or certain early adopters than you may be targeting as follows:
 
 ```python
 def my_view(request):
@@ -336,9 +340,9 @@ def my_view(request):
     # Behavior if flag is active.
 ```
 
-        Sites can run several such trials in parallel, so different sets of users might actually have different user experiences. Metrics and feedback are collected from such controlled tests before wider deployment.
+  Sites can run several such trials in parallel, so different sets of users might actually have different user experiences. Metrics and feedback are collected from such controlled tests before wider deployment.
 
-    • A/B testing: This is quite similar to trials except that users are selected randomly within a controlled experiment. This is quite common in web design to identify which changes can increase the conversion rates. This is how such a view can be written:
+- A/B testing: This is quite similar to trials except that users are selected randomly within a controlled experiment. This is quite common in web design to identify which changes can increase the conversion rates. This is how such a view can be written:
 
 ```python
 def my_view(request):
@@ -346,11 +350,11 @@ def my_view(request):
     # Behavior for test sample.
 ```
 
-    • Performance testing: Sometimes, it is hard to measure the impact of a feature on server performance. In such cases, it is best to activate the flag only for a small percentage of users first. The percentage of activations can be gradually increased if the performance is within the expected limits.
+-  Performance testing: Sometimes, it is hard to measure the impact of a feature on server performance. In such cases, it is best to activate the flag only for a small percentage of users first. The percentage of activations can be gradually increased if the performance is within the expected limits.  
 
-    • Limit externalities: We can also use feature flags as a site-wide feature switch that reflects the availability of its services. For example, downtime in external services such as Amazon S3 can result in users facing error messages while they perform actions, such as uploading photos.
+- Limit externalities: We can also use feature flags as a site-wide feature switch that reflects the availability of its services. For example, downtime in external services such as Amazon S3 can result in users facing error messages while they perform actions, such as uploading photos.  
 
-    When the external service is down for extended periods, a feature flag can be deactivated that would disable the upload button and/or show a more helpful message about the downtime. This simple feature saves the user's time and provides a better user experience:
+    When the external service is down for extended periods, a feature flag can be deactivated that would disable the upload button and/or show a more helpful message about the downtime. This simple feature saves the user's time and provides a better user experience:  
 
 ```python
 def my_view(request):
@@ -358,7 +362,7 @@ def my_view(request):
     # Disable uploads and show it is downtime
 ```
 
-    The main disadvantage of this approach is that the code gets littered with conditional checks. However, this can be controlled by periodic code cleanups that remove checks for fully accepted features and prune out permanently deactivated features.
+  The main disadvantage of this approach is that the code gets littered with conditional checks. However, this can be controlled by periodic code cleanups that remove checks for fully accepted features and prune out permanently deactivated features.  
 
 
 ## 总结
