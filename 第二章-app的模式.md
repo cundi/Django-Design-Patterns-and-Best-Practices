@@ -90,16 +90,22 @@ a MacBook (Interviewer: this interview was conducted over chat). Plus, I have th
 ```
 >E􏰋verything is easy. It doesn't take a superhu􏰀an effort to figure it out. Thanks for your time, Acorn.  
 
-## 为HTML建模
+## 为HTML版面设计
 在构建web应用的前几天，像Photoshop和Flash这样的工具做到像素级别的模型效果使用是非常广泛的。 They are hardly recommended or used anymore.  
 
-Giving a native and consistent experience across smartphones, tablets, laptops, and other platforms is now considered more important than getting that pixel-perfect look. In fact, most web designers directly create layouts on HTML.  
+现在对智能手机、平板、笔记本电脑和其他的平台保持原生和体验一致比像素层面的效果更为重要了。实际上，大多数的web设计者都基于HTML构建布局。  
 
-Creating an HTML mockup is a lot faster and easier than before. If your web designer is unavailable, developers can use a CSS framework such as Bootstrap or ZURB Foundation framework to create pretty decent mockups.  
+Creating an HTML mockup is a lot faster and easier than before. If your web designer is unavailable, developers can use a CSS framework such as Bootstrap or ZURB Foundation framework to create pretty decent mockups. 
+
+构建一个HTML版本相比以前快了很多。如果你暂时还没找到Web设计，那么开发者可以利用Bootstrap或者ZRUB这样的基本的CSS框架来构建非常漂亮的版面。  
 
 The goal of creating a mockup is to create a realistic preview of the website. It should not 􏰀erely focus on details and polish to look closer to the final product compared to a sketch, but add interactivity as well. Make your static HTML come to life with working links and some simple JavaScript-driven interactivity.  
 
+构建版面的目的就是为了创建一个实际上可用网站的预览。
+
 A good mockup can give 80 percent of customer experience with less than 20 percent of the overall development effort.  
+
+一个好的版面可以达到百分之八十的客户体验，以及少于百分之二十的总的开发成本。
 
 ## 设计应用
 当你对于自己所要构建的东西有相当好的构思时，你可以开始思考如何使用Django来实现它。再者，这可以诱导人开始编程。然而，当你花了几分钟时间来思考设计时，你可以发现非常多的不同方法来解决一个设计问题。  
@@ -119,9 +125,9 @@ Django的应用称做**project**。一个项目由多个应用或者**apps**组�
 
 理论上说，每个app都必须是可以重复使用的。你可以按照自己的需要创建尽可能多的app。绝对不要害怕添加跟多的app，或者重构一个已经存在的应用到多个app。一个典型的Djanog项目包含15到20个app。  
 
-An important decision to make at this stage is whether to use a third-party Django app or build one from scratch. Third-party apps are ready-to-use apps, which are not built by you. Most packages are quick to install and set up. You can start using them in a few minutes.  
+到了这一步，一个重要的决定就是是否使用Django的第三方应用，还是从零编写一个。第三方应用是无需你自己开发，便可以开箱即用的。大多数的包都可以很快安装并完成配置，几分钟之后就能够使用它们。  
 
-On the other hand, writing your own app often means designing and implementing the models, views, test cases, and so on yourself. Django will make no distinction between apps of either kind.  
+换句话来说，编写自己的应用意味着要常常自己设计并实现模型，视图，测试。Django和其他类型的应用并没有区别。  
 
 ### 用自己写的，还是使用别人的
 One of Django's biggest strengths is the huge ecosystem of third-party apps. At the time of writing, djangopackages.com lists 􏰀ore than 􏰁,􏰅􏰂􏰂 packages. You 􏰀ight find that your co􏰀pany or personal library has even 􏰀ore. 􏰔nce your project is broken into apps and you know which kind of apps you need, you will need to take a call for each app—whether to write or reuse an existing one.  
