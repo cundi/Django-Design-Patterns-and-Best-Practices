@@ -30,7 +30,11 @@ Python可能比其他流行的编程语言具有更多的web框架。
 <h2>Django的历史</h2>
 When you look at the Pyramids of Egypt, you would think that such a simple and minimal design must have been quite obvious. In truth, they are products of 4,000 years of architectural evolution. Step Pyramids, the initial (and clunky) design, had six rectangular blocks of decreasing size. It took several iterations of architectural and engineering improvements until the modern, glazing, and long-lasting limestone structures were invented.  
 
+当你看到埃及金字塔的历史时，你会很明显地认为它是一个简单、小规模的设计。事实上，埃及人的作品是经历了四千年建筑的进化。当你走进金字塔时就能够发现它的原始设计（非常厚重），拥有六个矩形的阶梯式递减的大石块。
+
 Looking at Django you might get a similar feeling. So, elegantly built, it must have been 􏰁awlessly conceived. 􏰚n the contrary, it was the result of rewrites and rapid iterations in one of the most high-pressure environments imaginable—a newsroom!  
+
+再回头来看看Django你也会有类似的感觉。因此，如果要简洁的构建它，必须经过无知无畏的设想。
 
 In the fall of 2003, two programmers, Adrian Holovaty and Simon Willison, working at the Lawrence Journal-World newspaper, were working on creating several local news websites in Kansas. These sites, including LJWorld.com, Lawrence.com, and KUsports.com—like most news sites were not just content-driven portals chock-
 full of text, photos, and videos, but they also constantly tried to serve the needs of the local Lawrence community with applications, such as a local business directory, events calendar, classifieds, and so on.  
