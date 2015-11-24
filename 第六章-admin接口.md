@@ -43,10 +43,10 @@ admin能够让你的团队在同一时间内添加内容，不间断开发。只
 >Soon, they were all at Steve's office staring at his screen. "See, I told you there is no beacon on the front page," said Evan. "We are still developing that feature." "Wait," said Steve. "Let me login through a non-staff account."
 In a few seconds, the page refreshed and an animated red beacon prominently appeared at the top. "That's the beacon I was talking about!" exclaimed Captain Obvious. "Hang on a minute," said Steve. He pulled up the source files for the new features deployed earlier that day. A glance at the beacon feature branch code made it clear what went wrong:  
 
-几秒钟之后，页面重新刷新，然后一个重要的红色提醒出现在顶部。“这就是我提到的信标！”装傻队长说道。“稍等一下啊，”斯蒂夫说到。他从前些天部署的新功能拉取了原文件。稍微看下信标功能的分支代码能够搞清楚到底哪里出问题了：  
+>几秒钟之后，页面重新刷新，然后一个重要的红色提醒出现在顶部。“这就是我提到的信标！”装傻队长说道。“稍等一下啊，”斯蒂夫说到。他从前些天部署的新功能拉取了原文件。稍微看下信标功能的分支代码能够搞清楚到底哪里出问题了：  
 
 >
-```
+```python
     if switch_is_active(request, 'beacon') and not
       request.user.is_staff():
            # Display the beacon
@@ -54,9 +54,11 @@ In a few seconds, the page refreshed and an animated red beacon prominently appe
 
 >"Sorry everyone," said Steve. "There has been a logic error. Instead of turning this feature on only for staff, we inadvertently turned it on for everyone but staff. It is turned off now. Apologies for any confusion."  
 
->“各位不好意思，”斯蒂夫说道。“这里出现了一个逻辑错误。我们一时疏忽就将该功能的开启开放给了所有人，而不是仅有站点注册用户来开启。现在我把这个功能给关闭了。对于因此而引起的混乱我表示歉意。”
+>“各位不好意思，”斯蒂夫说道。“这里出现了一个逻辑错误。我们一时疏忽就将该功能的启用开放给了所有人，而不是仅有站点注册用户来开启。现在我把这个功能给关闭了。对于因此而引起的混乱我表示歉意。”
 
 >"So, there was no emergency?" said Captain with a disappointed look. Hexa put an arm on his shoulder and said "I am afraid not, Captain." Suddenly, there was a loud crash and everyone ran to the hallway. A man had apparently landed in the office through one of the floor-to-ceiling glass walls. Shaking off shards of broken glass, he stood up. "Sorry, I came as fast as I could," he said, "Am I late to the party?" Hexa laughed. "No, Blitz. Been waiting for you to join," she said.  
+
+>“这么说，根本没什么要紧事喽？”队长带着一脸失望😞的说道。Hexa一面把手搭在他肩膀上一边说道：“我也不希望发生什么事情，队长。”突然之间，室内闪现出一团云，屋里的人都赶紧跑开了。  
 
 ## 增强用于admin的模型
 admin应用足够聪明，因此它可以自动地从模型发现非常多东西。可是，有时候推定信息需要改进。这通常涉及到模型自身添加一个属性或者一个方法（而不是在`ModelAdmin`类中添加）。  
@@ -154,6 +156,8 @@ The workflow for scheduling a class involves checking the schedules of other tea
 
 So, keep the set of people with admin access as small as possible. Make changes via admin sparingly, unless it is simple data entry such as adding an article's content.  
 
+因此，你要保持能够访问admin人群数量尽可能少。通过admin操作地变更要谨慎，除非是添加一篇文章内容这样地简单数据条目操作。  
+
 >###提示
 **最佳实践**
 不要让admin方法终端用户。  
@@ -169,16 +173,20 @@ Essentially, rectifying most misuses of the admin interface involves creating mo
 ## admin接口的定制
 The out-of-box admin interface is quite useful to get started. Unfortunately, most people assume that it is quite hard to change the Django admin and leave it as it is. In fact, the admin is extremely customizable and its appearance can be drastically changed with minimal effort.  
 
-## Changing the heading
+## Changing the heading 改变标题
 Many users of the admin interface might be stumped by the heading—Django administration. It might be more helpful to change this to something customized such as MySite admin or something cool such as SuperBook Secret Area.  
 
-It is quite easy to make this change. Simply add this line to your site's urls.py:   
+很多admin用户或许被标题——Django administration给难住了。
+
+It is quite easy to make this change. Simply add this line to your site's urls.py: 
+
+要改变标题是很容易的。在站点的urls.py中添加下面这行内容就好了：  
 
 ```python
     admin.site.site_header = "SuperBook Secret Area"
 ```
 
-## Changing the base and stylesheets
+## Changing the base and stylesheets 改变基本样式
 Almost every admin page is extended from a common base template named admin/base_site.html. This means that with a little knowledge of HTML and CSS, you can make all sorts of customizations to change the look and feel of the admin interface.  
 
 几乎所有的admin页面都扩展自叫做admin/base_site.html都公共基本模板。这意味着只需用到少量都HTML和CSS的知识，因此你可以定制所有的排序以改变admin接口的外观和视觉。
@@ -322,7 +330,11 @@ Hence, in large sites it is important to decouple deployment of new features in 
 ### Solution details 解决方法细节
 Many sites control the activation of new features using Feature Flags. A feature flag is a switch in your code that determines whether a feature should be made available to certain customers.  
 
+很多网站的新功能激活是透过功能标识实现的。功能标识是一个代码中的可以决定一个功能是否对某些用户开放的开关。  
+
 Several Django packages provide feature flags such as gargoyle and django-waffle. These packages store feature flags of a site in the database. They can be activated or deactivated through the admin interface or through management commands. Hence, every environment (production, testing, development, and so on) can have its own set of activated features.  
+
+Django有多个提供功能标识的包，比如 gargoyle 和 django-waffle。这些包在网站的数据库中存储功能标识。他们能够透过admin接口或者管理命令进行激活或者失效。因此，每一种环境（生产、测试、开发、等等）都可以拥有属于自己的一组激活功能。  
 
 Feature flags were originally documented, as used in Flickr (See http://code. flickr.net/2009/12/02/flipping-out/). They managed a code repository without any branches, that is, everything was checked into the mainline. They
 also deployed this code into production several times a day. If they found out
@@ -330,9 +342,14 @@ that a new feature broke anything in production or increased load on the databas
 
 Feature flags can be used for various other situations (the following examples use django-waffle):  
 
+功能标识可以用于多种情况（下面的例子使用的是django-waffle）：  
+
 - Trials:
     A feature flag can also be conditionally active for certain users.
     These can be your own staff or certain early adopters than you may be targeting as follows:
+- 考核：
+  功能标识也可以根据条件针对部分用户激活。  
+  
 
 ```python
 def my_view(request):
