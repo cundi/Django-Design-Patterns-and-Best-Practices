@@ -254,18 +254,24 @@ The last export command might not be required in some cases. If running pip free
     $ python manage.py runserver
 ```
 
-在Django1.7中，migrate命令已经被syncdb命令取代。我们也需要明确地调用creteasuperuser命令来创建一个超级用户，这样我们就可以访问admin了。  
+In Django 1.7, the migrate command has superseded the syncdb command. We also need to explicitly invoke the createsuperuser command to create a super user so that we can access the admin.  
+
+在Django1.7中，migrate命令已经取代了syncdb命令。我们也需要明确地调用creteasuperuser命令来创建一个超级用户，这样我们就可以访问admin了。  
 
 你可以浏览`http://127.0.0.1:8000`或者在终端指明URL，随便玩玩这个网站。  
 
-##总结  
+## 总结  
 Beginners often underestimate the importance of a good requirements-gathering process. At the same time, it is important not to get bogged down with the details, because programming is inherently an exploratory process. The most successful projects spend the right amount of time preparing and planning before develop􏰀ent so that it yields the 􏰀axi􏰀u􏰀 benefits.  
 
-新手总是低估了一个好的请求获取流程的重要性。于此同时，重要的是不要被细节所束缚，因为从本质来说，编程就是一个探究的过程。
+新手总是低估了一个优质的`请求－获取`流程的重要性。于此同时，重要的是不要被细节所束缚，因为从本质来说，编程就是一个探索的过程。很多成功的项目在开发之前都花掉了大量的时间来准备和计划，这样就可以获得应有的好处。  
 
 We discussed many aspects of designing an application, such as creating interactive mockups or dividing it into reusable components called apps. We also discussed the steps to set up SuperBook, our example project.  
 
+我谈论了设计应用的很多方面，比如创建交互模型，或者是将它分割到多个称为app的可重复使用组件。同时我们也讨论了配置项目SuperBook的步骤。  
+
 In the next chapter, we will take a look at each component of Django in detail and learn the design patterns and best practices around them.  
+
+在下一章，我们会详细地浏览Django的每个组件，并学习与这些组件相关的最佳实践。  
 
 --------------------
 © Creative Commons BY-NC-ND 3.0   |   [我要订阅](https://github.com/cundi/Django-Design-Patterns-and-Best-Practices/subscription)   |   [我要捐助](https://github.com/cundi/Web.Development.with.Django.Cookbook/issues/3)
