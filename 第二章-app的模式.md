@@ -182,7 +182,7 @@ While preparing a development environment, make sure that you have the following
 ```
   
 
-## SuperBook-少年来吧，接受你的这个任务
+## SuperBook-少年来吧，接受你的任务
 This book believes in a practical and pragmatic approach of demonstrating Django design patterns and the best practices through examples. For consistency, all our examples will be about building a social network project called SuperBook.  
 
 SuperBook focusses exclusively on the niche and often neglected market segment of people with exceptional super powers. You are one of the developers in a tea􏰀 comprised of other developers, web designers, a marketing manager, and a project manager.  
@@ -200,21 +200,26 @@ For this book, Python 3 was ideal for the following reasons:
 
 就本书来说，Python 3 由于以下几个原因看来它是最理想的：  
 
-```
-• Better syntax􏰕 This fixes a lot of ugly syntaxes, such as izip, xrange, and __unicode__, with the cleaner and more straightforward zip, range, and __str__.
 
-• Sufficient third-party support: Of the top 200 third-party libraries, more than 80 percent have Python 3 support.
+• Better syntax􏰕 This fixes a lot of ugly syntaxes, such as izip, xrange, and __unicode__, with the cleaner and more straightforward zip, range, and `__str__`.  
 
-• No legacy code: We are creating a new project, rather than dealing with legacy code that needs to support an older version.
+• Sufficient third-party support: Of the top 200 third-party libraries, more than 80 percent have Python 3 support.  
+
+• No legacy code: We are creating a new project, rather than dealing with legacy code that needs to support an older version.  
+
 不存在遗留的代码：我们创建一个新的项目，而不是来处理需要支持旧版本代码。 
 
-• Default in modern platforms: This is already the default Python interpreter in Arch Linux. Ubuntu and Fedora plan to complete the switch in a future release.
+• Default in modern platforms: This is already the default Python interpreter in Arch Linux. Ubuntu and Fedora plan to complete the switch in a future release.  
 
-• It is easy: From a Django development point of view, there are very few changes, and they can all be learnt in a few minutes.
-使用方便：站在Django开发的观点来看，其改变非常微小，所有变更的地方学起来也很快。
-```
+
+• It is easy: From a Django development point of view, there are very few changes, and they can all be learnt in a few minutes.   
+
+使用方便：站在Django开发的观点来看，其改变非常微小，所有变更的地方学起来也很快。  
+
   
-The last point is important. Even if you are using Python 2, this book will serve you fine. Read 􏰆ppendix 􏰆 to understand the changes. You will need to make only minimal adjustments to backport the example code.  
+The last point is important. Even if you are using Python 2, this book will serve you fine. Read a􏰆ppendix 􏰆 to understand the changes. You will need to make only minimal adjustments to backport the example code.  
+
+最后一点很重要。即使你现在使用的是Python 2，本书中的例子也能够很好的运行。  
 
 ### 开始项目
 本节是SuperBook项目的安装说明，它包含在本书中使用的所有代码实例。要为最新的安装注释检查项目的README文件。推荐你创建一个新的目录，superbook，首先包含虚拟环境，项目源码。  
@@ -232,7 +237,11 @@ $ export PATH="`pwd`/sbenv/local/bin:$PATH"
 These commands should work in most Unix-based operating systems. For installation instructions on other operating systems or detailed steps please refer to the README file at the 􏰒ithub repository􏰕 https://github.com/DjangoPatternsBook/ superbook. In the first line, we are invoking the Python 􏰄.􏰝 executable as python3;
 do confir􏰀 if this is correct for your operating syste􏰀 and distribution.  
 
+这些命令可以运行在大多数的基于Unix的操作系统。例如  
+
 The last export command might not be required in some cases. If running pip freeze lists your system packages rather than being empty, then you will need to enter this line.  
+
+代码中位于最后`export`命令在某些情况下不是必须的。如果运行`pip freeze`列出的系统包是空的，那么你需要输入这一行。  
 
 >#### 提示
 开始Django项目之前，创建一个新的虚拟环境  
@@ -258,12 +267,15 @@ In Django 1.7, the migrate command has superseded the syncdb command. We also ne
 
 在Django1.7中，migrate命令已经取代了syncdb命令。我们也需要明确地调用creteasuperuser命令来创建一个超级用户，这样我们就可以访问admin了。  
 
+You can navigate to http://127.0.0.1:8000 or the URL indicated in your terminal and feel free to play around with the site.
+  
+
 你可以浏览`http://127.0.0.1:8000`或者在终端指明URL，随便玩玩这个网站。  
 
 ## 总结  
-Beginners often underestimate the importance of a good requirements-gathering process. At the same time, it is important not to get bogged down with the details, because programming is inherently an exploratory process. The most successful projects spend the right amount of time preparing and planning before develop􏰀ent so that it yields the 􏰀axi􏰀u􏰀 benefits.  
+Beginners often underestimate the importance of a good requirements-gathering process. At the same time, it is important not to get bogged down with the details, because programming is inherently an exploratory process. The most successful projects spend the right amount of time preparing and planning before development so that it yields the maximum benefits.  
 
-新手总是低估了一个优质的`请求－获取`流程的重要性。于此同时，重要的是不要被细节所束缚，因为从本质来说，编程就是一个探索的过程。很多成功的项目在开发之前都花掉了大量的时间来准备和计划，这样就可以获得应有的好处。  
+新手总是低估了一个优质的`请求－获取`流程的重要性。于此同时，重要的是不要被细节所束缚，因为从本质来说，编程就是一个探索的过程。很多成功的项目在开发之前都花掉了大量的时间来准备和计划，这样才能获得最佳效果。      
 
 We discussed many aspects of designing an application, such as creating interactive mockups or dividing it into reusable components called apps. We also discussed the steps to set up SuperBook, our example project.  
 
