@@ -171,14 +171,13 @@ In the case of the university example, we created a separate interface for teach
 Essentially, rectifying most misuses of the admin interface involves creating more powerful tools for certain sets of users. However, don't take the easy (and wrong) path of granting them admin access.  
 
 ## admin接口的定制
-The out-of-box admin interface is quite useful to get started. Unfortunately, most people assume that it is quite hard to change the Django admin and leave it as it is. In fact, the admin is extremely customizable and its appearance can be drastically changed with minimal effort.  
+开箱即用单admin接口对于准备使用它的人来说非常有用。不幸的是，很多人都假设改变Django的admin肯定非常困难，然后就撒手不管了。实际上，admin是属于极其易于定制的，它的外观可以用最小的努力就得以改变。  
 
-## Changing the heading 改变标题
+## 改变标题
 Many users of the admin interface might be stumped by the heading—Django administration. It might be more helpful to change this to something customized such as MySite admin or something cool such as SuperBook Secret Area.  
 
 很多admin用户或许被标题——Django administration给难住了。
 
-It is quite easy to make this change. Simply add this line to your site's urls.py: 
 
 要改变标题是很容易的。在站点的urls.py中添加下面这行内容就好了：  
 
@@ -186,12 +185,8 @@ It is quite easy to make this change. Simply add this line to your site's urls.p
     admin.site.site_header = "SuperBook Secret Area"
 ```
 
-## Changing the base and stylesheets 改变基本样式
-Almost every admin page is extended from a common base template named admin/base_site.html. This means that with a little knowledge of HTML and CSS, you can make all sorts of customizations to change the look and feel of the admin interface.  
-
+## 改变基本样式
 几乎所有的admin页面都扩展自叫做admin/base_site.html都公共基本模板。这意味着只需用到少量都HTML和CSS的知识，因此你可以定制所有的排序以改变admin接口的外观和视觉。
-
-Simply create a directory called admin in any templates directory. Then, copy the base_site.html file from the Django source directory and alter it according to your needs. If you don't know where the templates are located, just run the following commands within the Django shell:  
 
 先简单地在任意地模板目录中创建一个名称为admin的目录。然后，从Django源目录复制文件base_site.html，并按照自己的需要做相应的变更。如果你不知道模板的位置，那么在Django shell中运行下面的命令就是了：  
 
@@ -201,9 +196,8 @@ Simply create a directory called admin in any templates directory. Then, copy th
 >>> print(join(admin.__path__[0], "templates", "admin"))
 ```
 
-For an example of customizing the admin base template, you can change the font of the entire admin interface to "Special Elite" from Google Fonts, which is great for giving a mock-serious look. You will need to add an admin/base_site.html file in one of your template's directories with the following contents:  
-
-例如，定制admin的基础模板，你可以改变admin接口的整个字体为谷歌字体“Special Elite”，谷歌的这个字体看上去非常的厚重。你需要使用以下内容在项目中的模板目录中添加一个文件admin/base_site.html。  
+ 
+例如，定制admin的基础模板，你可以改变admin接口的整个字体为谷歌字体“Special Elite”，谷歌的这个字体看上去非常的厚重。你需要使用以下内容在项目中的模板目录中添加一个文件admin/base_site.html；  
 
 ```python
     {% extends "admin/base.html" %}
@@ -216,22 +210,16 @@ For an example of customizing the admin base template, you can change the font o
     } </style>
     {% endblock %}
 ```
-
-This adds an extra stylesheet for overriding the font-related styles and will be applied to every admin page.  
+  
 
 该代码通过添加一个附加的样式表来重写与字体相关的样式，而且附加的样式会应用于每个admin的页面。  
 
-## Adding a Rich Text Editor for WYSIWYG editing
 ## 添加富文本编辑器
-Sometimes, you will need to include JavaScript code in the admin interface. A common requirement is to use an HTML editor such as CKEditor for your TextField.  
-
 有时候，你需要在admin接口中使用JavaScript代码。常见的一个需求就是对TextField使用CKEditor这样的HTML编辑器。  
 
-There are several ways to implement this in Django, for example, using a Media inner class on your ModelAdmin class. However, I find extending the admin change_form template to be the most convenient approach.  
 
 在Django中有多种实现这个编辑器的方法，例如，对ModleAdmin类使用一个Media内部类。不过，我发现扩展admin的change_form模板是最方便的方法。  
 
-For example, if you have an app called Posts, then you will need to create a file called change_form.html within the templates/admin/posts/ directory. If you need to show CKEditor (could be any JavaScript editor for that matter, but this one is the one I prefer) for the message field of any model in this app, then the contents of the file can be as follows:  
 
 例如，假如你拥有一个称作Posts的应用，那么你需要去在template/admin/posts/directory目录之内新建一个称作change_form.html的文件。如果你需要在这个应用内的任意模型中显示CKEditor，那么这个文件的内容是这个样子的：  
 
@@ -239,7 +227,6 @@ For example, if you have an app called Posts, then you will need to create a fil
 /home/arun/env/sbenv/lib/python3.4/site-packages/django/contrib/admin/templates/admin  
 ```
 
-The last line is the location of all your admin templates. You can override or extend any of these templates. Please refer to the next section for an example of extending the template.  
 
 该文件中的最后一行是所有admin模板中的位置所在。你可以重写或者扩展这些模板中的任何一个。可以参考下一小节的扩展模板的例子。  
 
@@ -261,41 +248,30 @@ The last line is the location of all your admin templates. You can override or e
     {% endblock %}
 ```
 
-The highlighted part is the automatically created ID for the form element we wish to enhance from a normal textbox to a Rich Text Editor. These scripts and styles have been added to the footer block so that the form elements would be created in the DOM before they are changed.  
 
 高亮的部分是用于我们希望将一个普通的文本输入框加强为富文本编辑器的表单元素的自动创建的ID。这些脚本和样式眼睛被添加到了footer块，这样表单元素可以在自身被改变之前，于DOM中创建。  
 
-## Bootstrap-themed admin
 ## 使用Bootstrap主题的admin
-Overall, the admin interface is quite well designed. However, it was designed in 2006 and, for the most part, looks that way too. It doesn't have a mobile UI or other niceties that have become standard today.  
 
 总的来说，admin接口已经设计非常好了。不过，由于它是在2006年设计的，而且是为了显示效果的通用性做出的设计。因此，它没有适应mobile设备，或者是拥有其他的已经成为今日事实标准的细节部分。  
 
-Unsurprisingly, the most common request for admin customization is whether it can be integrated with Bootstrap. There are several packages that can do this, such as django-admin-bootstrapped or djangosuit.  
-
 毫不奇怪的是admin定制中最常见要求是确定是否可以继承Bootstrap。有多个包可以实现这个需求，比如django-admin-bootstrapped或者djangosuit。  
 
-Rather than overriding all the admin templates yourself, these packages provide ready-to-use Bootstrap-themed templates. They are easy to install and deploy. Being based on Bootstrap, they are responsive and come with a variety of widgets and components.  
 
 这些包提供了开箱即用的基于Bootstrap主题的模板，而不是你自己去重新编写所有的admin模板。因为基于Bootstrap，所以它们拥有响应式功能，而且包含了多种部件和组件。  
 
-## Complete overhauls
 ## 彻底检查
-There have been attempts made to completely reimagine the admin interface too. Grappelli is a very popular skin that extends the Django admin with new features, such as autocomplete lookups and collapsible inlines. With django-admin-tools, you get a customizable dashboard and menu bar.  
-
 admin接口也已经在我们的尝试下完全的重写了。Grappelli是一个非常流行皮肤，它能够利用功能扩展Django admin，比如自动查询和折叠嵌套。使用django-admin-tools，你可以获得一个可定制的面板和工具栏。  
 
 There have been attempts made to completely rewrite the admin, such as django-admin2 and nexus, which did not gain any significant adoption. There is even an official proposal called AdminNext to revamp the entire admin app. Considering the size, complexity, and popularity of the existing admin, any such effort is expected to take a significant amount of time.  
 
 这里也有完全重写admin的尝试，比如django-admin2和nexus，它们不会着重使用的。
 
-## Protecting the admin
 ## 保护admin
 The admin interface of your site gives access to almost every piece of data stored. So, don't leave the metaphorical gate lightly guarded. In fact, one of the only telltale signs that someone runs Django is that, when you navigate to http://example. com/admin/, you will be greeted by the blue login screen.  
 
 网站的admin接口几乎访问了每一块存储的数据。因此，不要留下缺少保护的后门。实际上，
 
-In production, it is recommended that you change this location to something less obvious. It is as simple as changing this line in your root urls.py:  
 
 在生产环境中，我们建议你将这个地址改为不太显眼的地址。在项目的根urls.py中尽可能简单地变更该行：  
 
@@ -311,28 +287,23 @@ Check your web server documentation on how to set up HTTPS for admin requests. O
 
 The following pattern is not strictly limited to the admin interface but it is nonetheless included in this chapter, as it is often controlled in the admin.  
 
-## Pattern – feature flags 模式－ 功能标识
-Problem: Publishing of new features to users and deployment of the corresponding code in production should be independent.  
-
+## 模式－ 功能标识
 遇到的问题：对用户发布的新功能，以及在生产环境中部署的对应代码都应当是互相独立的。  
-
-Solution: Use feature flags to selectively enable or disable features after deployment.  
 
 解决方法：在部署之后，使用功能标识有选择性地启动或者禁用功能。  
 
-### Problem details 问题细节
+### 问题细节
 Rolling out frequent bug fixes and new features to production is common today. Many of these changes are unnoticed by users. However, new features that have significant impact in terms of usability or performance ought to be rolled out in a phased manner. In other words, deployment should be decoupled from a release.  
 
 Simplistic release processes activate new features as soon as they are deployed. This can potentially have catastrophic results ranging from user issues (swamping your support resources) to performance issues (causing downtime).  
 
 Hence, in large sites it is important to decouple deployment of new features in production and activate them. Even if they are activated, they are sometimes seen only by a select group of users. This select group can be staff or a sample set of customers for trial purposes.  
 
-### Solution details 解决方法细节
+### 解决方法细节
 Many sites control the activation of new features using Feature Flags. A feature flag is a switch in your code that determines whether a feature should be made available to certain customers.  
 
 很多网站的新功能激活是透过功能标识实现的。功能标识是一个代码中的可以决定一个功能是否对某些用户开放的开关。  
 
-Several Django packages provide feature flags such as gargoyle and django-waffle. These packages store feature flags of a site in the database. They can be activated or deactivated through the admin interface or through management commands. Hence, every environment (production, testing, development, and so on) can have its own set of activated features.  
 
 Django有多个提供功能标识的包，比如 gargoyle 和 django-waffle。这些包在网站的数据库中存储功能标识。他们能够透过admin接口或者管理命令进行激活或者失效。因此，每一种环境（生产、测试、开发、等等）都可以拥有属于自己的一组激活功能。  
 
@@ -383,10 +354,6 @@ def my_view(request):
 
 
 ## 总结
-In this chapter, we explored Django's built-in admin app. We found that it is not only quite useful out of the box, but that various customizations can also be done to improve its appearance and functionality.  
-
 本章我们探究了Django的内建应用admin。我们发现了它不仅仅是非常好用的开箱即用，而且可以实现各种定制，以改进它的外观和功能。  
-
-In the next chapter, we will take a look at how to use forms more effectively in Django by considering various patterns and common use cases.  
 
 下一章，我们将会通过思考多种模式和常见用法来学习在Django中如何更有效的使用表单。  
