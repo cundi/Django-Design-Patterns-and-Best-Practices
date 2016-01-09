@@ -12,8 +12,7 @@
 
 Django被谈论到最多的是, 与其他的竞争对手相比它将admin接口独立了出来。。admin接口是一个自动地生成添加和修改一个站点内容的用户接口。不仅如此，admin也是Django的杀手级应用，它使项目中对模型生成admin接口的乏味的任务可以自动化。  
 
-Admin enables your team to add content and continue development at the same time. Once your models are ready and migrations have been applied, you just need to add a line or two to create its admin interface. Let's see how.  
-admin能够让你的团队在同一时间内添加内容，不间断开发。只要模型已经应用了迁移，你仅需添加一行或者两行代码就可以生成模型的的admin接口。
+admin能够让你的团队在同一时间内添加内容，不间断开发。只要模型已经应用了迁移，你仅需添加一行或者两行代码就可以生成模型的的admin接口。  
 
 ## 使用admin接口
 在Django1.7中，admin接口默认是启用的。在创建项目之后，你浏览`http://127.0.0.1:800/admin`时能够看到一个登录页面。  
@@ -32,7 +31,6 @@ admin能够让你的团队在同一时间内添加内容，不间断开发。只
 
 >### 注释
 **引路人**
-"Having coffee?" asked a voice from the corner of the pantry. Sue almost spilled her coffee. A tall man wearing a tight red and blue colored costume stood smiling with hands on his hips. The logo emblazoned on his chest said in large type—Captain Obvious.  
 “还有咖啡吗☕️？“一个声音来自备餐室角落的声音问道。苏差点儿把咖啡洒了出来。她前面站着一位身着紧身红蓝相间衣服👔，面带微笑，将手叉在腰间的高个子男人。
 
 >"Oh, my god," said Sue as she wiped the coffee stain with a napkin. "Sorry, I think I scared you," said Captain Obvious "What is the emergency?"
@@ -52,7 +50,6 @@ In a few seconds, the page refreshed and an animated red beacon prominently appe
            # Display the beacon
 ```
 
->"Sorry everyone," said Steve. "There has been a logic error. Instead of turning this feature on only for staff, we inadvertently turned it on for everyone but staff. It is turned off now. Apologies for any confusion."  
 
 >“各位不好意思，”斯蒂夫说道。“这里出现了一个逻辑错误。我们一时疏忽就将该功能的启用开放给了所有人，而不是仅有站点注册用户来开启。现在我把这个功能给关闭了。对于因此而引起的混乱我表示歉意。”
 
@@ -114,31 +111,24 @@ admin应用足够聪明，因此它可以自动地从模型发现非常多东西
   
 我们来看看这些更为严密的选项：  
 
-    • list_display: This option shows the model instances in a tabular form. Instead of using the model's __str__ representation, it shows each field mentioned as a separate sortable column. This is ideal if you like to see more than one attribute of your model.  
+- list-display: 该选项在一个表格形式的表单中该显示模型实例。它显示每个独立可排序列的字段。如果你希望看到模型的多个属性，该选项是非常理想的。
 
-    - list-display: 该选项在一个表格形式的表单中该显示模型实例。它显示每个独立可排序列的字段。如果你希望看到模型的多个属性，该选项是非常理想的。  
 
-    • search_fields: This option shows a search box above the list. Any search term entered would be searched against the mentioned fields. Hence, only text fields such as CharField or TextField can be mentioned here.  
+- search_fields: 该选项在列表上面显示一个搜索框。任何的输入的搜索项都可以搜索到对应的引用字段。因此，仅有CharField或者TextField这样的文本字段被引用。  
 
-    - search_fields: 该选项在列表上面显示一个搜索框。任何的输入的搜索项都可以搜索到对应的引用字段。因此，仅有CharField或者TextField这样的文本字段被引用。
 
-    • ordering: This option takes precedence over your model's default ordering. It is useful if you prefer a different ordering in your admin screen.
-
-     - ordering: 该选项优先于模型的默认顺序。在admin后台管理中选择一个不同的顺序时，会很有用的。
+- ordering: 该选项优先于模型的默认顺序。在admin后台管理中选择一个不同的顺序时，会很有用的。 
 
 图片：略  
 
-The preceding screenshot shows the following insets:  
 前面的截图插入内容为：  
 
-• Inset 1: Without str or Meta attributes 
 - 插入内容1: 不使用str或者Meta属性  
-• Inset 2: With enhanced model meta attributes 
-- 插入内容2: 使用增强的模型meta属性  
-• Inset 3: With customized ModelAdmin
-- 插入内容3: 使用定制的ModelAdmin
 
-Here, we have only mentioned a subset of commonly used admin options. Certain kinds of sites use the admin interface heavily. In such cases, it is highly recommended that you go through and understand the admin part of the Django documentation.  
+- 插入内容2: 使用增强的模型meta属性  
+
+- 插入内容3: 使用定制的ModelAdmin 
+
 
 这里我们仅仅提到了一个常用的amdin选项子集。某些类型的网站会重度地使用admin接口。在这样地情况下，这里强烈建议你彻彻底底搞明白Django文档的admin部分。  
 
@@ -279,11 +269,9 @@ The admin interface of your site gives access to almost every piece of data stor
 url(r'^secretarea/', include(admin.site.urls)),
 ```
 
-A slightly more sophisticated approach is to use a dummy admin site at the default location or a honeypot (see the django-admin-honeypot package). However, the best option is to use HTTPS for your admin area since normal HTTP will send all the data in plaintext over the network.  
+一个稍微更加成熟的做法是在默认位置使用假的admin站点或者蜜罐（参见第三方包`django-admin-honeypot`）。不过，最好的选择对admin站点范围内使用HTTPS，因为常规的HTTP会把所有的数据以明文格式发送到网络中去。  
 
-一个稍微更加精巧的做法是利用
-
-Check your web server documentation on how to set up HTTPS for admin requests. On Nginx, it is quite easy to set this up and involves specifying the SSL certificate locations. Finally, redirect all HTTP requests for admin pages to HTTPS, and you can sleep more peacefully.  
+检查web服务器的文档，看看如何为到admin的请求设置HTTPS。在Nginx上面，设置这个连接方式非常的简单，涉及到的有指定SSL认证位置。最后，将所有到admin页面的HTTP请求重定向到HTTPS，现在可以安生地睡个好觉了。  
 
 The following pattern is not strictly limited to the admin interface but it is nonetheless included in this chapter, as it is often controlled in the admin.  
 
