@@ -283,9 +283,15 @@ The following pattern is not strictly limited to the admin interface but it is n
 ### 问题细节
 Rolling out frequent bug fixes and new features to production is common today. Many of these changes are unnoticed by users. However, new features that have significant impact in terms of usability or performance ought to be rolled out in a phased manner. In other words, deployment should be decoupled from a release.  
 
+现如今，惯常的bug修复和新功能在生产环境中是很常见的。对于用户这些改变中很多的改变是不被通知的。不过，
+
 Simplistic release processes activate new features as soon as they are deployed. This can potentially have catastrophic results ranging from user issues (swamping your support resources) to performance issues (causing downtime).  
 
+过于简单发布过程
+
 Hence, in large sites it is important to decouple deployment of new features in production and activate them. Even if they are activated, they are sometimes seen only by a select group of users. This select group can be staff or a sample set of customers for trial purposes.  
+
+因此，在生产环境中对于大型站点来说最重要的是解构新功能的部署，并激活这些新功能。即使这些新功能被激活了，它们也只是仅仅对被选择了的用户可见。这个被挑选出来的组可以是站点注册成员，也可以是一组简单的出于试验目的而存在的用户。  
 
 ### 解决方法细节
 Many sites control the activation of new features using Feature Flags. A feature flag is a switch in your code that determines whether a feature should be made available to certain customers.  
@@ -299,6 +305,8 @@ Feature flags were originally documented, as used in Flickr (See http://code. fl
 also deployed this code into production several times a day. If they found out
 that a new feature broke anything in production or increased load on the database, then they simply disabled it by turning that feature flag off.  
 
+功能旗帜是得到原生的文档支持，一如用在Flickr。它们不用任何分支管理代码仓库，即，一切内容都记录到主线中。它们在一天可以多次部署到生产环境中。如果在生产环境中发现新的功能破坏了任何其他东西，或者增加了数据库的负载，那么它们都通过关闭功能旗帜来简单的禁用。  
+
 Feature flags can be used for various other situations (the following examples use django-waffle):  
 
 功能标识可以用于多种情况（下面的例子使用的是django-waffle）：  
@@ -306,39 +314,49 @@ Feature flags can be used for various other situations (the following examples u
 - Trials:
     A feature flag can also be conditionally active for certain users.
     These can be your own staff or certain early adopters than you may be targeting as follows:
-- 考核：
+- 试用：
   功能标识也可以根据条件针对部分用户激活。  
+  如下，这些用户可以是站点的注册成员，或者某些你想指定监护人：  
   
 
 ```python
 def my_view(request):
     if flag_is_active(request, 'flag_name'):
-    # Behavior if flag is active.
+    # Behavior if flag is active. 
 ```
 
-  Sites can run several such trials in parallel, so different sets of users might actually have different user experiences. Metrics and feedback are collected from such controlled tests before wider deployment.
+Sites can run several such trials in parallel, so different sets of users might actually have different user experiences. Metrics and feedback are collected from such controlled tests before wider deployment.  
+  
+站点可以平行的运行多个试用，这样不同组的用户实际上可以拥有不同的用户体验。在大范围部署之前，可以从这里可控制的测试中收集质量和反馈。  
 
-- A/B testing: This is quite similar to trials except that users are selected randomly within a controlled experiment. This is quite common in web design to identify which changes can increase the conversion rates. This is how such a view can be written:
+- A/B testing: This is quite similar to trials except that users are selected randomly within a controlled experiment. This is quite common in web design to identify which changes can increase the conversion rates. This is how such a view can be written:  
+- A/B测试：该测试很类似于体验测试，除了用户在被控制的试验中随机地选择用户。对于web设计来说识别出哪个变更能够增加转换速率是相当常见的。这也展示这样的一个视图是如何编写的：  
 
 ```python
 def my_view(request):
     if sample_is_active(request, 'design_name'):
-    # Behavior for test sample.
+    # Behavior for test sample. 针对测试例子的具体行为
 ```
 
 -  Performance testing: Sometimes, it is hard to measure the impact of a feature on server performance. In such cases, it is best to activate the flag only for a small percentage of users first. The percentage of activations can be gradually increased if the performance is within the expected limits.  
+-  性能测试：有时候，很难去测量服务器上一个功能性能影响。这类例子中，最好是首先仅对一小部分激活旗帜。如果性能存在未预料地的限制，激活百分比可以逐渐地增加。  
 
 - Limit externalities: We can also use feature flags as a site-wide feature switch that reflects the availability of its services. For example, downtime in external services such as Amazon S3 can result in users facing error messages while they perform actions, such as uploading photos.  
+- 扩展性的限制：我们也可以使用功能旗帜
 
-    When the external service is down for extended periods, a feature flag can be deactivated that would disable the upload button and/or show a more helpful message about the downtime. This simple feature saves the user's time and provides a better user experience:  
+When the external service is down for extended periods, a feature flag can be deactivated that would disable the upload button and/or show a more helpful message about the downtime. This simple feature saves the user's time and provides a better user experience:  
+
+当扩展服务因为扩展周期而关闭时，新的功能旗帜被取消激活将会禁用上传按钮同时／或者显示关于关闭时间更为有帮助的消息。这个简单的功能保存了用户的时间并提供了更好的用户体验：  
 
 ```python
 def my_view(request):
     if switch_is_active('s3_down'):
-    # Disable uploads and show it is downtime
+    # Disable uploads and show it is downtime 禁用上传并在被禁用时显示
 ```
 
-  The main disadvantage of this approach is that the code gets littered with conditional checks. However, this can be controlled by periodic code cleanups that remove checks for fully accepted features and prune out permanently deactivated features.  
+The main disadvantage of this approach is that the code gets littered with conditional checks. However, this can be controlled by periodic code cleanups that remove checks for fully accepted features and prune out permanently deactivated features.  
+
+这个方法的主要缺点是按照某些条件检查代码会变得垃圾。不过，
 
 
 ## 总结
