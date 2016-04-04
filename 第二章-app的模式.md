@@ -19,16 +19,16 @@
 
 我通过与客户耗去数天来仔细地的倾听他们的需求，以及合理的期望值，拯救了好几个注定失败的项目。除了纸（或者他们的数字设备）和一支笔之外什么也没用，处理过程极其简单但是却很有效。这里是一些获取请求的关键地方：  
 
-    1. 直接和应用的所有者沟通即使他们没有技术背景。  
-    2. 确保你完整的倾听他们的需求并提醒他们。  
-    3. 不要使用“模型”这一类的技术术语。保证用语简单，使用终端用户能理解的术语比如“用户账户”。  
-    4.合理的期望值。如果某件事情在技术行不可行，或者很难实现，要保证你以正确的方法告知他们。  
-    5.描述的尽可能具象。在大自然中人类是依靠视觉。网站更是如此。使用粗线条和图形表。不需要多么的完美。  
-    6.分解处理流程，比如用户注册。任何多步骤的功能都需要以用箭头连接的方框画出。
-    7.最后，解决用户叙述表格中的特性，
-    8.扮演一个活动的角色
-    9.在融合新特性上要非常，非常地保守。
-    10.开会，和大家分享你的笔记以避免误解。  
+1. 直接和应用的所有者沟通即使他们没有技术背景。  
+2. 确保你完整的倾听他们的需求并提醒他们。  
+3. 不要使用“模型”这一类的技术术语。保证用语简单，使用终端用户能理解的术语比如“用户账户”。  
+4. 合理的期望值。如果某件事情在技术行不可行，或者很难实现，要保证你以正确的方法告知他们。  
+5. 描述的尽可能具象。在大自然中人类是依靠视觉。网站更是如此。使用粗线条和图形表。不需要多么的完美。  
+6. 分解处理流程，比如用户注册。任何多步骤的功能都需要以用箭头连接的方框画出。
+7. 最后，解决用户叙述表格中的特性，
+8. 扮演一个活动的角色
+9. 在融合新特性上要非常，非常地保守。
+10. 开会，和大家分享你的笔记以避免误解。  
 
 第一个会议会比较长（可能是一整个工作日，或者好几个小时）。之后，当这些会议的沟通变的顺畅时，你可以将它们削减到30分钟或者一个小时。  
 
@@ -54,13 +54,13 @@
 >下面的是采访是在未来我们的网站SuperBook网站运行起来之后的记录。一个半小时的用户测试在采访之前就做过了。  
 
 >**请你作下自我介绍**
-俺叫阿克苏。俺是一个生活在纽市中心的灰松鼠。不过呢，大家都叫俺阿康。俺爹叫缇巴厘是一个嘻哈音乐明星，他过去也这样叫俺。俺猜啊，俺从来在唱歌方面就差好多，因此没能够子承父业。  
+我叫阿克苏。我是一个生活在纽市中心的灰松鼠。不过呢，大家都叫我阿康。我爹叫缇巴厘是一个嘻哈音乐明星，他过去也这样叫俺。我猜啊，我从来在唱歌方面就差好多，因此没能够子承父业。  
 
->实际哩，在俺很小的时候，俺就有点儿喜欢偷东西。医生说俺对坚果过敏，这也是大家伙都知道嘀。俺家其他的几个哥哥吃坚果都没啥事儿。俺几个兄弟都可以在任何地方活下去。俺也曾酒馆，电影院，游乐园，还有好多地方把歌唱。俺看唱片的时候，忒别认真。  
+>实际哩，在我很小的时候，我就有点儿喜欢偷东西。医生说我对坚果过敏，这也是大家伙都知道嘀。我们家其他的几个哥哥吃坚果都没啥事儿。我的几个兄弟都可以在任何地方活下去。我也曾酒馆，电影院，游乐园，还有好多地方把歌唱。我看唱片的时候，忒别认真。  
 
 >**好吧，阿康。你为什么被挑选为测试用户，你知道为什么吗？**  
 
->可能吧，因为俺是纽约大明星里最少知道超级英雄的人。俺猜啊，这人类啊都笑话俺这只可以用苹果电脑的松鼠。补充一句，俺可是一只非常有耐心的松鼠。  
+>可能吧，因为我是纽约大明星里最少知道超级英雄的人。我猜啊，这人类啊都笑话俺这只可以用苹果电脑的松鼠。补充一句，我可是一只非常有耐心的松鼠噢。  
 
 >**就你所见到的，你来说一说你所认识的SuperBook是个什么样子**
 
@@ -83,14 +83,14 @@ a MacBook (Interviewer: this interview was conducted over chat). Plus, I have th
 
 >Sure, I think this is a pretty decent social network, where you can:  
 ```
-• Sign up with any user name (no more, "enter your real name", silliness)
-• Fans can follow people without having to add them as "friends"
-• Make posts, comment on them, and re-share them
-• Send a private post to another user
+－ Sign up with any user name (no more, "enter your real name", silliness)
+－ Fans can follow people without having to add them as "friends"
+－ Make posts, comment on them, and re-share them
+－ Send a private post to another user
 ```
 >E􏰋verything is easy. It doesn't take a superhu􏰀an effort to figure it out. Thanks for your time, Acorn.  
 
-## 为HTML版面设计
+## HTML版面的设计
 在构建web应用的前几天，像Photoshop和Flash这样的工具做到像素级别的模型效果使用是非常广泛的。 They are hardly recommended or used anymore.  
 
 现在对智能手机、平板、笔记本电脑和其他的平台保持原生和体验一致比像素层面的效果更为重要了。实际上，大多数的web设计者都基于HTML构建布局。  
@@ -105,19 +105,23 @@ The goal of creating a mockup is to create a realistic preview of the website. I
 
 A good mockup can give 80 percent of customer experience with less than 20 percent of the overall development effort.  
 
-一个好的版面可以达到百分之八十的客户体验，以及少于百分之二十的总的开发成本。
+一个好的版面可以小于20%的开发总成本，达到80%的客户体验。  
 
 ## 设计应用
 当你对于自己所要构建的东西有相当好的构思时，你可以开始思考如何使用Django来实现它。再者，这可以诱导人开始编程。然而，当你花了几分钟时间来思考设计时，你可以发现非常多的不同方法来解决一个设计问题。  
 
 一如测试驱动的开发方法论中提倡的那样，你也可以首先从测试开始。我们会在测试章节见到更多的TDD方法。我们会在测试那章见到更多的TDD方法。
 
-Whichever approach you take, it is best to stop and think—"Which are the different ways in which I can i􏰀ple􏰀ent this? What are the trade􏰉offs? Which factors are 􏰀ore i􏰀portant in our context? Finally, which approach is the best?􏰎  
+Whichever approach you take, it is best to stop and think—"Which are the different ways in which I can i􏰀ple􏰀ent this? What are the trade􏰉offs? Which factors are 􏰀more i􏰀mportant in our context? Finally, which approach is the best?􏰎  
 
-不乱你选择的方式是哪一种，最好是停下来想一想——“”
+不论你选择的方式是哪一种，最好是停下来想一想——“我要使用哪一种方法来实现它？折衷考虑如何？在我们的应用场景中哪一个因素才是最重要的？最后要考虑的是，哪种方法才是最好的选择？”
 
-Experienced Django developers look at the overall project in different ways. 􏰊ticking to the DRY principle 􏰐or so􏰀eti􏰀es because they get la􏰓y􏰑, they think 􏰌􏰎Have I seen this functionality before? For instance, can this social login feature be implemented using a third-party package such as django-all-auth?􏰎
+Experienced Django developers look at the overall project in different ways. 􏰊ticking to the DRY principle 􏰐or so􏰀metim􏰀es because they get la􏰓y􏰑, they think 􏰌􏰎Have I seen this functionality before? For instance, can this social login feature be implemented using a third-party package such as django-all-auth?􏰎
 If they have to write the app themselves, they start thinking of various design patterns in the hope of an elegant design. However, they first need to break down a project at the top level into apps。  
+
+有经验的Django开发者多角度的看待整个项目。敲定DRY原则，或者有时候只是因为他们很懒，他们在想我之前是不是见到过这个功能？比如，这个社交登录功能是否可以使用诸如django-all-auth这样的第三方包来实现呢？  
+
+如果他们必须自己编写因公，那么他们会开始考虑以一种能够复合优雅设计的多种设计模式。不过，他们首先需要在顶层将一个项目分割到应用中去。  
 
 
 ### 将一个项目分离为多个应用
@@ -132,34 +136,44 @@ Django的应用称做**project**。一个项目由多个应用或者**apps**组�
 ### 用自己写的，还是使用别人的
 One of Django's biggest strengths is the huge ecosystem of third-party apps. At the time of writing, djangopackages.com lists 􏰀ore than 􏰁,􏰅􏰂􏰂 packages. You 􏰀ight find that your co􏰀pany or personal library has even 􏰀ore. 􏰔nce your project is broken into apps and you know which kind of apps you need, you will need to take a call for each app—whether to write or reuse an existing one.  
 
+Django的一个强大之处在于它的大量的第三方应用生态。
+
 It might sound easier to install and use a readily available app. However, it not as simple as it sounds. Let's take a look at some third-party authentication apps for our project, and list the reasons why we didn't use them for SuperBook at the time of writing:  
-```
-• Over-engineered for our needs: We felt that python-social-auth with support for any social login was unnecessary
-• Too specific: Using django-facebook would mean tying our authentication to that provided by a specific website
-• Python dependencies: One of the requirements of django-allauth is python-openid, which is not actively maintained or unapproved
-• Non-Python dependencies: Some packages might have non-Python dependencies, such as Redis or Node.js, which have deployment overheads
-• Not reusable: Many of our own apps were not used because they were not very easy to reuse or were not written to be reusable
-```
+
+
+- Over-engineered for our needs: We felt that python-social-auth with support for any social login was unnecessary
+- Too specific: Using django-facebook would mean tying our authentication to that provided by a specific website
+- Python dependencies: One of the requirements of django-allauth is python-openid, which is not actively maintained or unapproved
+- Non-Python dependencies: Some packages might have non-Python dependencies, such as Redis or Node.js, which have deployment overheads
+- Not reusable: Many of our own apps were not used because they were not very easy to reuse or were not written to be reusable
+
   
 None of these packages are bad. They just don't meet our needs for now. They might be useful for a different project. In our case, the built-in Django auth app was good enough.
 On the other hand, you might prefer to use a third-party app for some of the following reasons:
   
-```
-• Too hard to get right􏰕 Do your 􏰀odel's instances need to for􏰀 a tree? Use django-mptt for a database􏰉efficient i􏰀ple􏰀entation
-• Best or recommended app for the job: This changes over time but packages such as django-redis are the most recommended for their use case
-• Missing batteries: Many feel that packages such as django-model-utils and django-extensions should have been part of the framework
-• Minimal dependencies: This is always good in my book
-```
-  
-S􏰊o, should you reuse apps and save ti􏰀e or write a new custo􏰀 app? I would recommend that you try a third-party app in a sandbox. If you are an intermediate Django developer, then the next section will tell you how to try packages in a sandbox.  
+
+- Too hard to get right􏰕 Do your 􏰀odel's instances need to for􏰀 a tree? Use django-mptt for a database􏰉efficient i􏰀ple􏰀entation
+- Best or recommended app for the job: This changes over time but packages such as django-redis are the most recommended for their use case
+- Missing batteries: Many feel that packages such as django-model-utils and django-extensions should have been part of the framework
+- Minimal dependencies: This is always good in my book
+
+S􏰊o, should you reuse apps and save ti􏰀em or write a new custo􏰀m app? I would recommend that you try a third-party app in a sandbox. If you are an intermediate Django developer, then the next section will tell you how to try packages in a sandbox.  
+
+那么，我应该重复使用应用来节省时间还是重写一个新的应用？我建议你在沙箱中尝试下第三方应用。如果你是一个中级水平的Django开发者，那么下面的章节会教会你如何在沙箱中使用应用。  
 ￼
 
-#### 我的app沙箱
+#### 我的应用沙箱
 From time to time, you will come across several blog posts listing the "must-have Django packages". However, the best way to decide whether a package is appropriate for your project is Prototyping.  
+
+有时候你会遇到多个列有“Django必备包”的博文。不过呢，要确定一个包是否适合你的项目的方式是原型。  
 
 Even if you have created a Python virtual environment for development, trying all these packages and later discarding them can litter your environment. So, I usually end up creating a separate virtual environment named "sandbox" purely for trying such apps. Then, I build a small project to understand how easy it is to use.  
 
+即便你因为开发而创建了多个Python虚拟环境，尝试了所有的包然后丢弃它们，但这会搞乱你的虚拟环境。所以，通常的结果是我新建一个独立的称作“沙箱“的虚拟环境，完全只为了尝试这类应用。然后，我构建一个的小型的应用来理解如何使用它。  
+
 Later, if I am happy with my test drive of the app, I create a branch in my project using a version control tool such as Git to integrate the app. Then, I continue with coding and running tests in the branch until the necessary features are added. Finally, this branch will be reviewed and merged back to the mainline (sometimes called master) branch.  
+
+之后，要是我乐意的话，我会测试应用，使用诸如Git这样的版本控制工具在项目中创建一个集成到应用到分支。然后，我继续
 
 ### 它是由哪个包组成的？
 为了阐明过程，我们的SuperBook项目可以粗略地分解为下列app（没有全部列出）：
@@ -275,7 +289,7 @@ You can navigate to http://127.0.0.1:8000 or the URL indicated in your terminal 
 ## 总结  
 Beginners often underestimate the importance of a good requirements-gathering process. At the same time, it is important not to get bogged down with the details, because programming is inherently an exploratory process. The most successful projects spend the right amount of time preparing and planning before development so that it yields the maximum benefits.  
 
-新手总是低估了一个优质的`请求－获取`流程的重要性。于此同时，重要的是不要被细节所束缚，因为从本质来说，编程就是一个探索的过程。很多成功的项目在开发之前都花掉了大量的时间来准备和计划，这样才能获得最佳效果。      
+新手总是低估了一个优质的`请求－获取`流程的重要性。于此同时，重要的是不要被细节所束缚，因为从本质来说，编程就是一个探索的过程。很多成功的项目在开发之前都花掉了大量的时间来准备和计划，这样才能获得最佳效果。  
 
 We discussed many aspects of designing an application, such as creating interactive mockups or dividing it into reusable components called apps. We also discussed the steps to set up SuperBook, our example project.  
 

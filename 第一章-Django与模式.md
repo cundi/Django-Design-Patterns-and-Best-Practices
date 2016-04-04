@@ -1,4 +1,4 @@
-第一章 Django与模式
+# 第一章 Django与模式
 ================
 
 在这一章，我们讨论以下话题： 
@@ -10,7 +10,7 @@
 	 Django中的模式
 	
 
-我们为什么选择Django？
+## 我们为什么选择Django？
 ------------------------------
 
 每个web应用都不尽相同，就像一件手工制作的家具一样。你几乎会很少发现大批量的生成能够完美地达到你的需求。即使你从一个基本需求开始，比如一个博客或者一个社交网络，你都需要缓慢地开发，
@@ -27,7 +27,7 @@ Python可能比其他流行的编程语言具有更多的web框架。
 
 某些内建的特性，比如admin接口，如果你使用过其他的web框架或许让你听上去感觉有点怪怪的。为了Django的设计，就让我们找出它是如何问世的。
 
-<h2>Django的历史</h2>
+## Django的历史
 When you look at the Pyramids of Egypt, you would think that such a simple and minimal design must have been quite obvious. In truth, they are products of 4,000 years of architectural evolution. Step Pyramids, the initial (and clunky) design, had six rectangular blocks of decreasing size. It took several iterations of architectural and engineering improvements until the modern, glazing, and long-lasting limestone structures were invented.  
 
 当你看到埃及金字塔的历史时，你会很明显地认为它是一个简单、小规模的设计。事实上，埃及人的作品是经历了四千年建筑的进化。当你走进金字塔时就能够发现它的原始设计（非常厚重），拥有六个矩形的阶梯式递减的大石块。
@@ -83,27 +83,27 @@ Over the years, it is amazing how Django developers took these criticisms positi
 
 前面的图片展示了从一个访客的浏览器到Django应用并返回的一个web请求的简单历程。如下是数字标识的路径：
 
-	1. 浏览器发送请求（基本上是字节类型的字符串）到web服务器。
+1. 浏览器发送请求（基本上是字节类型的字符串）到web服务器。
 	
-	2. web服务器（比如，Nginx）把这个请求转交到一个WSGI（比如，uWSGI），或者直接地文件系统能够取出
+2. web服务器（比如，Nginx）把这个请求转交到一个WSGI（比如，uWSGI），或者直接地文件系统能够取出
 	一个文件（比如，一个CSS文件）。
 	
-	3. 不像web服务器那样，WSGI服务器可以直接运行Python应用。请求生成一个被称为environ的Ptyhon字典，
+3. 不像web服务器那样，WSGI服务器可以直接运行Python应用。请求生成一个被称为environ的Ptyhon字典，
 	而且，可以选择传递过去几个中间件的层，最终，达到Django应用。
 	
-	4. URLconf中含有属于应用的urls.py选择一个视图处理基于请求的URL的那个请求，这个请求就已经变成了
+4. URLconf中含有属于应用的urls.py选择一个视图处理基于请求的URL的那个请求，这个请求就已经变成了
 	HttpRequest——一个Python字典对象。
 	
-	5. 被选择的那个视图通常要做下面所列出的一件或者更多件事情： 
+5. 被选择的那个视图通常要做下面所列出的一件或者更多件事情： 
 	
-	   通过模型与数据库对话。
-	   使用模板渲染HTML或者任何格式化过的响应。
-	   返回一个纯文本响应（不被显示的）。
-	   抛出一个异常。
+	通过模型与数据库对话。
+	使用模板渲染HTML或者任何格式化过的响应。
+	返回一个纯文本响应（不被显示的）。
+	抛出一个异常。
 	   
-	6. HttpResponse对象离开Django后，被渲染为一个字符串。
+6. HttpResponse对象离开Django后，被渲染为一个字符串。
 	
-	7. 在浏览器见到一个美化的，渲染后的web页面。
+7. 在浏览器见到一个美化的，渲染后的web页面。
 	
 
 虽然某些细节被省略掉，这个解释应该有助于欣赏Django的高级架构。它也展示了关键的组件所扮演的角色，比如模型，视图，和模板。Django的很多组件都基于这几个广为人知设计模式。  
@@ -126,7 +126,7 @@ In the world of software, the term design pattern refers to a general repeatable
 
 There are several collections of design patterns but some have been considerably 􏰀ore in􏰁uential than the others.  
   
-###四人组模式
+### 四人组模式
 One of the earliest efforts to study and document design patterns was a book
 titled Design Patterns: Elements of Reusable Object-Oriented Software by Erich Gamma, Richard Helm, Ralph Johnson, and John Vlissides, who later became known as the Gang of Four (GoF). This book is so in􏰁uential that 􏰀any consider the 􏰜􏰥 design patterns in the book as fundamental to software engineering itself.  
 
