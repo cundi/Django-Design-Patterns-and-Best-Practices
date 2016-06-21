@@ -1,9 +1,6 @@
 第六章-Admin接口
 **************
-
-
 这一章，我们会讨论以下话题：  
-
 
 - 定制admin
 - 增强admin的模型
@@ -18,6 +15,8 @@ admin能够让你的团队在同一时间内添加内容，不间断开发。只
 在Django1.7中，admin接口默认是启用的。在创建项目之后，你浏览`http://127.0.0.1:800/admin`时能够看到一个登录页面。  
 
 如果输入超级用户凭证（或者任意站点注册用户的凭证），那么你会登录到admin中，一如下面截图所示：  
+
+![img](images/chapter6_1.png)
 
 不过，模型在admin管理界面是不可见的，除非你定义一个与之对应的`ModelAdmin`类。这个操作通常定义在应用的admin.py文件，一如下面所示：
   
@@ -63,63 +62,64 @@ admin应用足够聪明，因此它可以自动地从模型发现非常多东西
 首先，为了更好的说明问题，让我们来看一个包括admin接口而增强模型的例子：  
 
 ```python
-    # models.py
-    class SuperHero(models.Model):
-       name = models.CharField(max_length=100)
-       added_on = models.DateTimeField(auto_now_add=True)
+# models.py
+class SuperHero(models.Model):
+    name = models.CharField(max_length=100)
+    added_on = models.DateTimeField(auto_now_add=True)
 
-       def __str__(self):
-           return "{0} - {1:%Y-%m-%d %H:%M:%S}".format(self.name,
-                                                       self.added_on)
-       def get_absolute_url(self):
-           return reverse('superhero.views.details', args=[self.id])
+    def __str__(self):
+        return "{0} - {1:%Y-%m-%d %H:%M:%S}".format(self.name,
+                                                   self.added_on)
+    def get_absolute_url(self):
+        return reverse('superhero.views.details', args=[self.id])
 
-       class Meta:
-           ordering = ["-added_on"]
-           verbose_name = "superhero"
-           verbose_name_plural = "superheroes"
+    class Meta:
+        ordering = ["-added_on"]
+        verbose_name = "superhero"
+        verbose_name_plural = "superheroes"
 ```
   
 
 我们看看admin是如何利用这些非字段属性的：  
 
-```
-    • __str__(): 没有它的话，superhero条目的列表看上去会极其无趣的。每一个条目都请清楚地显示为`<SuperHero: SuperHero object>`。试着去包含对象自己的`str`表现形式的唯一信息（在Python2中的代码，是`unicode`表现形式），比如对象自己的名称或者版本。任何能够有助于admin不含糊地理解的东西都是大有裨益的。
 
-    • get_absolute_url(): 如果你喜欢在网站中的admin视图和对象详细视图之间切换，该属性会很方便的。如果该方法被定义，那么在admin页面中对象的编辑页面的右上会出现一个叫做`”View on site“`的按钮。
+- `__str__()`: 没有它的话，superhero条目的列表看上去会极其无趣的。每一个条目都请清楚地显示为`<SuperHero: SuperHero object>`。试着去包含对象自己的`str`表现形式的唯一信息（在Python2中的代码，是`unicode`表现形式），比如对象自己的名称或者版本。任何能够有助于admin不含糊地理解的东西都是大有裨益的。
 
-    • ordering: 如果没有这个元选项，你的条目会在数据数据库返回后以任意顺序出现。你也可以想象一下，如果你有大量的项目对于管理来说可不是好玩的。刷新
+- get_absolute_url(): 如果你喜欢在网站中的admin视图和对象详细视图之间切换，该属性会很方便的。如果该方法被定义，那么在admin页面中对象的编辑页面的右上会出现一个叫做`”View on site“`的按钮。
 
-    • verbose_name: 如果你忽略该属性，模型的名称会从`CamelCase`转换到`camelcase`。这个例子中，“super hero`看上去不那么优美，因此最好是明确你要如何将用户可读的名称显示在admin接口。
+- ordering: 如果没有这个元选项，你的条目会在数据数据库返回后以任意顺序出现。你也可以想象一下，如果你有大量的项目对于管理来说可不是好玩的。刷新项通常优先被看到，所以按照反向的时序来排列日期是很常见的。  
 
-    • verbose_name_plural: 再者，忽略该选项能够给你带来比较有趣的结果。因为Django简单地将一个‘s’预加到单词，复数形式的superhero显示为`”superheros“`(仍旧出现在admin前面的页面)。因此，这里最好是正确地定义它。
-```
+- verbose_name: 如果你忽略该属性，模型的名称会从`CamelCase`转换到`camelcase`。这个例子中，“super hero`看上去不那么优美，因此最好是明确你要如何将用户可读的名称显示在admin接口。
 
+- verbose_name_plural: 再者，忽略该选项能够给你带来比较有趣的结果。因为Django简单地将一个‘s’预加到单词，复数形式的superhero显示为`”superheros“`(仍旧出现在admin前面的页面)。因此，这里最好是正确地定义它。
 
 这里建议你定义前面的`Meta`属性和方法，而不仅仅是只用于admin接口，而且也是为了在shell中和日志文件中，等等中更好的表现内容。  
 
 当然，你也可以像下面这样，通过创建一个`ModelAdmin`类来进一步改进在admin里的显示：  
 
 ```python
-     # admin.py
-    class SuperHeroAdmin(admin.ModelAdmin):
-       list_display = ('name', 'added_on')
-       search_fields = ["name"]
-       ordering = ["name"]
-    admin.site.register(models.SuperHero, SuperHeroAdmin)
+# admin.py
+class SuperHeroAdmin(admin.ModelAdmin):
+   list_display = ('name', 'added_on')
+   search_fields = ["name"]
+   ordering = ["name"]
+
+
+admin.site.register(models.SuperHero, SuperHeroAdmin)
 ```
   
-我们来看看这些更为严密的选项：  
+让我们来仔细地看看这些选项：  
 
 - list-display: 该选项在一个表格形式的表单中该显示模型实例。它显示每个独立可排序列的字段。如果你希望看到模型的多个属性，该选项是非常理想的。
 
-
 - search_fields: 该选项在列表上面显示一个搜索框。任何的输入的搜索项都可以搜索到对应的引用字段。因此，仅有CharField或者TextField这样的文本字段被引用。  
-
 
 - ordering: 该选项优先于模型的默认顺序。在admin后台管理中选择一个不同的顺序时，会很有用的。 
 
-图片：略  
+![img](images/chapter6_2_1.png)
+![img](images/chapter6_2_2.png)
+
+`加强过的模型admin页面`
 
 前面的截图插入内容为：  
 
@@ -129,20 +129,21 @@ admin应用足够聪明，因此它可以自动地从模型发现非常多东西
 
 - 插入内容3: 使用定制的ModelAdmin 
 
-
 这里我们仅仅提到了一个常用的amdin选项子集。某些类型的网站会重度地使用admin接口。在这样地情况下，这里强烈建议你彻彻底底搞明白Django文档的admin部分。  
 
 ## 不应该让所有人都成为admin
 Since admin interfaces are so easy to create, people tend to misuse them. Some give early users admin access by merely turning on their 'staff' flag. Soon such users begin making feature requests, mistaking the admin interface to be the actual application interface.  
 
-因为admin接口很轻松就可以创建了，所以有可能被滥用。
+因为admin接口太容易就创建了，用户可能会滥用这个功能。
 
 Unfortunately, this is not what the admin interface is for. As the flag suggests, it is an internal tool for the staff to enter content. It is production-ready but not really intended for the end users of your website.
 It is best to use admin for simple data entry. For example, in a project I had reviewed, every teacher was made an admin for a Django application managing university courses. This was a poor decision since the admin interface confused the teachers.  
 
-不幸的是这不是admin接口的本来目的。
+不幸的是这不是admin接口的原本用意。就像旗标所建议的那样，它只是一个用于站点成员输入内容的内部工具。它被用于生产环境，而且并没有打算面向网站的终端用户。  
 
 The workflow for scheduling a class involves checking the schedules of other teachers and students. Using the admin interface gives them a direct view of the database. There is very little control over how the data gets modified by the admin.  
+
+类的计划工作流涉及到了检查其他教师和学生的计划任务。使用admin接口给他们一个直接的数据库视图。admin对数据的修改需要非常微小的控制。  
 
 So, keep the set of people with admin access as small as possible. Make changes via admin sparingly, unless it is simple data entry such as adding an article's content.  
 
@@ -150,26 +151,29 @@ So, keep the set of people with admin access as small as possible. Make changes 
 
 >###提示
 **最佳实践**
-不要让admin方法终端用户。  
+不要对终端用户开放admin访问。  
 
 Ensure that all your admins understand the data inconsistencies that can arise from making changes through the admin. If possible, record manually or use apps, such as django-audit-loglog that can keep a log of admin changes made for future reference.  
 
-确保
+请确保网站的所有管理员都理解了可能带来的数据不一致性对正在操作变更的其他管理员的影响。如果有可能的话，手工纪录活着使用应用，比如django-audit-loglog保存admin的变更日志以应对未来的引用需要。  
 
 In the case of the university example, we created a separate interface for teachers, such as a course builder. These tools will be visible and accessible only if the user has a teacher profile.  
 
+在这个大学校园的例子中，我们为教师创建了独立的接口，比如课程构造器。这些工具仅在用户拥有教师账户时才可以被访问。  
+
 Essentially, rectifying most misuses of the admin interface involves creating more powerful tools for certain sets of users. However, don't take the easy (and wrong) path of granting them admin access.  
 
+基本上，要修正大多数的admin接口滥用问题，涉及到了为了某一组用户创建更加强大的工具。不过，还要对admin的设置的很简单（错误）授权路径。  
+
 ## admin接口的定制
-开箱即用单admin接口对于准备使用它的人来说非常有用。不幸的是，很多人都假设改变Django的admin肯定非常困难，然后就撒手不管了。实际上，admin是属于极其易于定制的，它的外观可以用最小的努力就得以改变。  
+开箱即用单admin接口对于准备使用它的人来说非常有用。不幸的是，很多人都假设改变Django的admin肯定非常困难，然后就撒手不管了。实际上，admin是属于极其易于定制的，它的外观可以用最少的努力就得以改变。  
 
 ## 改变标题
 Many users of the admin interface might be stumped by the heading—Django administration. It might be more helpful to change this to something customized such as MySite admin or something cool such as SuperBook Secret Area.  
 
-很多admin用户或许被标题——Django administration给难住了。
+很多admin用户或许被标题——Django administration给难住了。将这个标题改为某些自定义的内容，比如MySite admin或者其他的炫酷的标题，比如SuperBook Secret Area。  
 
-
-要改变标题是很容易的。在站点的urls.py中添加下面这行内容就好了：  
+更改变标题很容易。在站点的urls.py中添加下面这行内容就好了：  
 
 ```python
     admin.site.site_header = "SuperBook Secret Area"
@@ -186,30 +190,26 @@ Many users of the admin interface might be stumped by the heading—Django admin
 >>> print(join(admin.__path__[0], "templates", "admin"))
 ```
 
- 
 例如，定制admin的基础模板，你可以改变admin接口的整个字体为谷歌字体“Special Elite”，谷歌的这个字体看上去非常的厚重。你需要使用以下内容在项目中的模板目录中添加一个文件admin/base_site.html；  
 
 ```python
-    {% extends "admin/base.html" %}
-    {% block extrastyle %}
-       <link href='http://fonts.googleapis.com/css?family=Special+Elite'
-    rel='stylesheet' type='text/css'>
-       <style type="text/css">
-        body, td, th, input {
-          font-family: 'Special Elite', cursive;
-    } </style>
-    {% endblock %}
+{% extends "admin/base.html" %}
+{% block extrastyle %}
+   <link href='http://fonts.googleapis.com/css?family=Special+Elite'
+rel='stylesheet' type='text/css'>
+   <style type="text/css">
+    body, td, th, input {
+      font-family: 'Special Elite', cursive;
+} </style>
+{% endblock %}
 ```
-  
 
 该代码通过添加一个附加的样式表来重写与字体相关的样式，而且附加的样式会应用于每个admin的页面。  
 
 ## 添加富文本编辑器
 有时候，你需要在admin接口中使用JavaScript代码。常见的一个需求就是对TextField使用CKEditor这样的HTML编辑器。  
 
-
 在Django中有多种实现这个编辑器的方法，例如，对ModleAdmin类使用一个Media内部类。不过，我发现扩展admin的change_form模板是最方便的方法。  
-
 
 例如，假如你拥有一个称作Posts的应用，那么你需要去在template/admin/posts/directory目录之内新建一个称作change_form.html的文件。如果你需要在这个应用内的任意模型中显示CKEditor，那么这个文件的内容是这个样子的：  
 
@@ -217,27 +217,24 @@ Many users of the admin interface might be stumped by the heading—Django admin
 /home/arun/env/sbenv/lib/python3.4/site-packages/django/contrib/admin/templates/admin  
 ```
 
-
 该文件中的最后一行是所有admin模板中的位置所在。你可以重写或者扩展这些模板中的任何一个。可以参考下一小节的扩展模板的例子。  
 
 ```python
-    {% extends "admin/change_form.html" %}
-    {% block footer %}
-     {{ block.super }}
-     <script src="//cdn.ckeditor.com/4.4.4/standard/ckeditor.js"></
-    script>
-    <script> CKEDITOR.replace("id_message", {
-        toolbar: [
-        [ 'Bold', 'Italic', '-', 'NumberedList', 'BulletedList'],],
-        width: 600,
-      });
-     </script>
-     <style type="text/css">
-      .cke { clear: both; }
-     </style>
-    {% endblock %}
+{% extends "admin/change_form.html" %}
+{% block footer %}
+ {{ block.super }}
+ <script src="//cdn.ckeditor.com/4.4.4/standard/ckeditor.js"></script>
+<script> CKEDITOR.replace("id_message", {
+    toolbar: [
+    [ 'Bold', 'Italic', '-', 'NumberedList', 'BulletedList'],],
+    width: 600,
+  });
+ </script>
+ <style type="text/css">
+  .cke { clear: both; }
+ </style>
+{% endblock %}
 ```
-
 
 高亮的部分是用于我们希望将一个普通的文本输入框加强为富文本编辑器的表单元素的自动创建的ID。这些脚本和样式眼睛被添加到了footer块，这样表单元素可以在自身被改变之前，于DOM中创建。  
 
@@ -275,6 +272,8 @@ url(r'^secretarea/', include(admin.site.urls)),
 
 The following pattern is not strictly limited to the admin interface but it is nonetheless included in this chapter, as it is often controlled in the admin.  
 
+下面的模式没有严格地限制admin接口，但是这个模式尽管出现了这一章的内容之中，这些模式常常被控制在了admin中。  
+
 ## 模式－ 功能标识
 遇到的问题：对用户发布的新功能，以及在生产环境中部署的对应代码都应当是互相独立的。  
 
@@ -283,11 +282,11 @@ The following pattern is not strictly limited to the admin interface but it is n
 ### 问题细节
 Rolling out frequent bug fixes and new features to production is common today. Many of these changes are unnoticed by users. However, new features that have significant impact in terms of usability or performance ought to be rolled out in a phased manner. In other words, deployment should be decoupled from a release.  
 
-现如今，惯常的bug修复和新功能在生产环境中是很常见的。对于用户这些改变中很多的改变是不被通知的。不过，
+现如今，惯常的bug修复和新功能在生产环境中是很常见的。对于用户这些改变中很多的改变是不被通知的。不过，新的功能在可用性方面具有重大的影响，或者在阶段执行中可能会抛出性能问题。换句话来说，部署应该从发布中拆解出来。  
 
 Simplistic release processes activate new features as soon as they are deployed. This can potentially have catastrophic results ranging from user issues (swamping your support resources) to performance issues (causing downtime).  
 
-过于简单发布过程
+只要这些应用部署过之后，就简单地释放并处理新功能的激活。这可能导致灾难性的结果包括用户问题（清除你所提供支持的内容）到性能问题（引起宕机）。  
 
 Hence, in large sites it is important to decouple deployment of new features in production and activate them. Even if they are activated, they are sometimes seen only by a select group of users. This select group can be staff or a sample set of customers for trial purposes.  
 
@@ -327,7 +326,7 @@ def my_view(request):
 
 Sites can run several such trials in parallel, so different sets of users might actually have different user experiences. Metrics and feedback are collected from such controlled tests before wider deployment.  
   
-站点可以平行的运行多个试用，这样不同组的用户实际上可以拥有不同的用户体验。在大范围部署之前，可以从这里可控制的测试中收集质量和反馈。  
+站点可以平行的运行多个这类测试，这样不同组的用户实际上可以拥有不同的用户体验。在大范围部署之前，可以从这里可控制的测试中收集质量和反馈。  
 
 - A/B testing: This is quite similar to trials except that users are selected randomly within a controlled experiment. This is quite common in web design to identify which changes can increase the conversion rates. This is how such a view can be written:  
 - A/B测试：该测试很类似于体验测试，除了用户在被控制的试验中随机地选择用户。对于web设计来说识别出哪个变更能够增加转换速率是相当常见的。这也展示这样的一个视图是如何编写的：  
