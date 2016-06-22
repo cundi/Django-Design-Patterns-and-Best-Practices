@@ -30,12 +30,13 @@ admin能够让你的团队在同一时间内添加内容，不间断开发。只
 
 >### 注释
 **引路人**
-“还有咖啡吗☕️？“一个声音来自备餐室角落的声音问道。苏差点儿把咖啡洒了出来。她前面站着一位身着紧身红蓝相间衣服👔，面带微笑，将手叉在腰间的高个子男人。
+“还有咖啡吗☕️？“一个声音来自备餐室角落的声音问道。苏差点儿把咖啡洒了出来。她前面站着一位身着紧身红蓝相间衣服👔，面带微笑，将手叉在腰间的高个子男人👨。
 
 >"Oh, my god," said Sue as she wiped the coffee stain with a napkin. "Sorry, I think I scared you," said Captain Obvious "What is the emergency?"
 "Isn't it obvious that she doesn't know?" said a calm feminine voice from above. Sue looked up to find a shadowy figure slowly descend from the open hall. Her face was partially obscured by her dark matted hair that had a few grey streaks. "Hi Hexa!" said the Captain "But then, what was the message on SuperBook about?"  
 
 >“哎呦喂，”苏说道，同时另一边她小毛巾擦掉了泼出去的咖啡。“不好意啊，吓到你了，”装傻队长问道。“什么事这么急啊？”
+>“这么明显它的事情她还会不知道吗？”一个冷静的女声从楼上传来。
 
 >Soon, they were all at Steve's office staring at his screen. "See, I told you there is no beacon on the front page," said Evan. "We are still developing that feature." "Wait," said Steve. "Let me login through a non-staff account."
 In a few seconds, the page refreshed and an animated red beacon prominently appeared at the top. "That's the beacon I was talking about!" exclaimed Captain Obvious. "Hang on a minute," said Steve. He pulled up the source files for the new features deployed earlier that day. A glance at the beacon feature branch code made it clear what went wrong:  
@@ -44,9 +45,9 @@ In a few seconds, the page refreshed and an animated red beacon prominently appe
 
 >
 ```python
-    if switch_is_active(request, 'beacon') and not
-      request.user.is_staff():
-           # Display the beacon
+if switch_is_active(request, 'beacon') and not
+    request.user.is_staff():
+         # Display the beacon
 ```
 
 
@@ -176,7 +177,7 @@ Many users of the admin interface might be stumped by the heading—Django admin
 更改变标题很容易。在站点的urls.py中添加下面这行内容就好了：  
 
 ```python
-    admin.site.site_header = "SuperBook Secret Area"
+admin.site.site_header = "SuperBook Secret Area"
 ```
 
 ## 改变基本样式
@@ -244,7 +245,6 @@ rel='stylesheet' type='text/css'>
 
 毫不奇怪的是admin定制中最常见要求是确定是否可以继承Bootstrap。有多个包可以实现这个需求，比如django-admin-bootstrapped或者djangosuit。  
 
-
 这些包提供了开箱即用的基于Bootstrap主题的模板，而不是你自己去重新编写所有的admin模板。因为基于Bootstrap，所以它们拥有响应式功能，而且包含了多种部件和组件。  
 
 ## 彻底检查
@@ -252,13 +252,12 @@ admin接口也已经在我们的尝试下完全的重写了。Grappelli是一个
 
 There have been attempts made to completely rewrite the admin, such as django-admin2 and nexus, which did not gain any significant adoption. There is even an official proposal called AdminNext to revamp the entire admin app. Considering the size, complexity, and popularity of the existing admin, any such effort is expected to take a significant amount of time.  
 
-这里也有完全重写admin的尝试，比如django-admin2和nexus，它们不会着重使用的。
+这里也有完全重写admin的尝试，比如django-admin2和nexus，它们不看重使用。甚至存在一个官方的称作AdminNext的改良整个admin应用的提案。考虑现有admin的大小，复杂度，和流行度，任何这方面的努力很明显都要耗去非常多的时间。  
 
 ## 保护admin
-The admin interface of your site gives access to almost every piece of data stored. So, don't leave the metaphorical gate lightly guarded. In fact, one of the only telltale signs that someone runs Django is that, when you navigate to http://example. com/admin/, you will be greeted by the blue login screen.  
+The admin interface of your site gives access to almost every piece of data stored. So, don't leave the metaphorical gate lightly guarded. In fact, one of the only telltale signs that someone runs Django is that, when you navigate to http://example.com/admin/, you will be greeted by the blue login screen.  
 
-网站的admin接口几乎访问了每一块存储的数据。因此，不要留下缺少保护的后门。实际上，
-
+网站的admin接口几乎访问了每一块存储的数据。因此，不要留下缺少保护的后门。实际上，当你访问http://example.com/admin/ 时，问候你的是蓝色的登陆屏幕，这也是仅有的一个迹象表明你运行的东西就是Django。  
 
 在生产环境中，我们建议你将这个地址改为不太显眼的地址。在项目的根urls.py中尽可能简单地变更该行：  
 
@@ -313,7 +312,8 @@ Feature flags can be used for various other situations (the following examples u
 - Trials:
     A feature flag can also be conditionally active for certain users.
     These can be your own staff or certain early adopters than you may be targeting as follows:
-- 试用：
+
+- 测试：
   功能标识也可以根据条件针对部分用户激活。  
   如下，这些用户可以是站点的注册成员，或者某些你想指定监护人：  
   
@@ -329,6 +329,7 @@ Sites can run several such trials in parallel, so different sets of users might 
 站点可以平行的运行多个这类测试，这样不同组的用户实际上可以拥有不同的用户体验。在大范围部署之前，可以从这里可控制的测试中收集质量和反馈。  
 
 - A/B testing: This is quite similar to trials except that users are selected randomly within a controlled experiment. This is quite common in web design to identify which changes can increase the conversion rates. This is how such a view can be written:  
+
 - A/B测试：该测试很类似于体验测试，除了用户在被控制的试验中随机地选择用户。对于web设计来说识别出哪个变更能够增加转换速率是相当常见的。这也展示这样的一个视图是如何编写的：  
 
 ```python
@@ -338,10 +339,12 @@ def my_view(request):
 ```
 
 -  Performance testing: Sometimes, it is hard to measure the impact of a feature on server performance. In such cases, it is best to activate the flag only for a small percentage of users first. The percentage of activations can be gradually increased if the performance is within the expected limits.  
+
 -  性能测试：有时候，很难去测量服务器上一个功能性能影响。这类例子中，最好是首先仅对一小部分激活旗帜。如果性能存在未预料地的限制，激活百分比可以逐渐地增加。  
 
 - Limit externalities: We can also use feature flags as a site-wide feature switch that reflects the availability of its services. For example, downtime in external services such as Amazon S3 can result in users facing error messages while they perform actions, such as uploading photos.  
-- 扩展性的限制：我们也可以使用功能旗帜
+
+- 扩展性的限制：我们也可以使用功能旗帜作为整个网站的能够反映自身提供服务的功能开关。例如，内部服务的停止运行，比如当执行上传图片这类动作时Amazon S3会让用户碰到错误信息。  
 
 When the external service is down for extended periods, a feature flag can be deactivated that would disable the upload button and/or show a more helpful message about the downtime. This simple feature saves the user's time and provides a better user experience:  
 
@@ -355,8 +358,7 @@ def my_view(request):
 
 The main disadvantage of this approach is that the code gets littered with conditional checks. However, this can be controlled by periodic code cleanups that remove checks for fully accepted features and prune out permanently deactivated features.  
 
-这个方法的主要缺点是按照某些条件检查代码会变得垃圾。不过，
-
+这个方法的主要缺点是按照条件检查会让代码会变得乱七八糟。不过，这个问题可以通过周期性的代码清洁来对所使用的功能移除检查，然后永久地去除不活动的功能。  
 
 ## 总结
 本章我们探究了Django的内建应用admin。我们发现了它不仅仅是非常好用的开箱即用，而且可以实现各种定制，以改进它的外观和功能。  
