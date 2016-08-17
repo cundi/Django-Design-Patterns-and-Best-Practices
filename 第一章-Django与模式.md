@@ -200,9 +200,9 @@ Almost all of these patterns would be useful to know while architecting a Django
 
 Django also implements a number of these patterns. The following table lists a few of them:  
 
-Django中的模式与此对比：  
+Django中的模式与此对比：
 
-|四人组模式	  	|Django组件	  	|解释					|
+|福勒模式	  	|Django组件	  	|解释					|
 |-------------	|:-------------:|--------------------:	|
 |活动记录		|Django模型		|封装数据库访问，对数据添加域名逻辑
 |类表继承		|模型继承		|继承中的每个实体都映射到一个独立的表
