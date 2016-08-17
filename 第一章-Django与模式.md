@@ -224,12 +224,12 @@ This book will cover Django􏰃specific design and architecture patterns, which 
 
 *Pattern name*
 The heading is the pattern name. If it is a well-known pattern, the commonly used name is used; otherwise, a terse, self-descriptive name has been chosen. Names are important, as they help in building the pattern vocabulary. All patterns will have the following parts:  
-*Problem*:􏰂 This brie􏰁y 􏰀entions the proble􏰀.
-  
+*Problem*:This briefly mentions the problem
+
 *Solution*: This summarizes the proposed solution(s).
-  
 
 *Problem Details*: This elaborates the context of the problem and possibly gives an example.
+
 *Solution Details*: This explains the solution(s) in general terms and provides a sample Django implementation.
 
 本书覆盖针对对于Django开发者会很有用的Django的设计和架构模式。接下来的章节会描述每个模式是如何实现的。
@@ -237,31 +237,50 @@ The heading is the pattern name. If it is a well-known pattern, the commonly use
 **模式名称**
 标题是模式名称。如果它是知名的模式，常用的名字被使用；否则，简洁的，自描述的名称被选择。名称非常重要，它们有助于构建模式词汇。所有的模式都有以下部分：  
 
-### 鉴审模式
+问题：简洁地提出要解决的问题
+
+解决方案：概述对应的解决方案
+
+问题细节：详细地描述问题的北京并尽可能给出例子
+
+方案细节：用通俗的语言描述解决方案并提供一个Django实现的例子
+
+### 对模式的批判
 Despite their near universal usage, Patterns have their share of criticism too. The most common arguments against them are as follows:  
 
-尽管它们近乎于通用，模式共享也有它们的审鉴共享。它们的最常见参数如下： 
+尽管它们近乎于通用，模式共享也有它们的共同的缺陷。对它们的最常见的批评如下： 
 
-- Patterns compensate for the missing language features: Peter Norvig found that 16 of the 23 patterns in Design Patterns were 'invisible or simpler' in Lisp. Considering Python's introspective facilities and first􏰃class functions, this 􏰀ight as well be the case for Python too.
+- Patterns compensate for the missing language features: Peter Norvig found that 16 of the 23 patterns in Design Patterns were 'invisible or simpler' in Lisp. Considering Python's introspective facilities and first class functions, this might as well be the case for Python too.
 - Patterns repeat best practices: Many patterns are essentially formalizations of best practices such as separation of concerns and could seem redundant.
-- Patterns can lead to over-engineering: Implementing the pattern might be less efficient and excessive co􏰀pared to a si􏰀pler solution. 
+- Patterns can lead to over-engineering: Implementing the pattern might be less efficient and excessive compared to a simpler solution. 
+
+- 模式补偿了缺失的语言特点：Peter Norving发现在23个设计模式中有16个对于Lisp语言来说是"透明的和简单的"。考虑到Python的内省机制和头等函数，这对于Python来说也是如此。
+
+- 模式重复了最佳实践：许多模式语言层面上已经实现了，本质上只是形式，显得多余。
+
+- 模式可能导致过度设计：相对于简单的解决方案，实现模式的过程可能会导致低效率和代码冗余。
 
 ### 如何使用模式  
 While some of the previous criticisms are quite valid, they are based on how patterns are misused. Here is some advice that can help you understand how best to use design patterns:
-  
+
+虽然上述批判非常合理，但前提是在滥用模式的基础上。这里有些建议帮助你合理的使用设计模式。
 
 - Don't implement a pattern if your language supports a direct solution
-- Don't try to retro􏰃fit everything in ter􏰀s of patterns
-- 
+- 如果你使用的语言支持直接的解决方案那就不要实现这一模式
+
+- Don't try to retro fit everything in terms of patterns
+- 就模式而言不要试图去推翻所有东西
+
 - Use a pattern only if it is the most elegant solution in your context  
 - 在开发环境中且仅当解决方法为最简练时使用模式  
+
 - Don't be afraid to create new patterns  
 - 不要害怕创建新模式  
 
 
 >#### 最佳实践  
 In addition to design patterns, there might be a recommended approach to solving a problem. In Django, as with Python, there might be several ways to solve a problem but one idiomatic approach among those.  
-除了设计模式之外，还是存在其他推荐的方法来解决一个问题。在Django中，因为使用的语言就是Python，所以我们就有
+除了设计模式之外，还是存在其他推荐的方法来解决一个问题。在Django中，因为使用的语言就是Python，所以我们会有多种方法去解决一个问题，但其中必有一个是最地道的。
 
 ### Python之禅和Django的设计哲学  
 Generally, the Python community uses the term 'Pythonic' to describe a piece of idiomatic code. It typically refers to the principles laid out in 'The Zen of Python'. Written like a poem, it is extremely useful to describe such a vague concept.
@@ -273,6 +292,8 @@ Generally, the Python community uses the term 'Pythonic' to describe a piece of 
 Furthermore, Django developers have crisply documented their design philosophies while designing the framework at https://docs.djangoproject.com/en/dev/ misc/design-philosophies/.  
 
 While the document describes the thought process behind how Django was designed, it is also useful for developers using Django to build applications. Certain principles such as Don't Repeat Yourself (DRY), loose coupling, and tight cohesion can help you write more maintainable and idiomatic Django applications.  
+
+虽然文档描述了Django设计的思维过程，但它对开发这创建应用来说仍然非常游泳。公认的几个原则例如DRY原则，松耦合和高内聚等可以帮助你写出可持续和地道的Django应用。
 
 Django or Python best practices suggested by this book would be formatted in the following manner:  
 
