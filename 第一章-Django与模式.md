@@ -200,7 +200,7 @@ Almost all of these patterns would be useful to know while architecting a Django
 
 Django also implements a number of these patterns. The following table lists a few of them:  
 
-Django中的模式与此对比：  
+Django中的模式与此对比：
 
 |福勒模式	  	|Django组件	  	|解释					|
 |-------------	|:-------------:|--------------------:	|
