@@ -10,12 +10,6 @@
 * 保持文章原文，不作修改。
 * 明确署名，即至少注明 `作者：cundi` 字样以及文章的原始链接。
 
-如果你认为译文对你所有帮助，而且希望看到更多，可以考虑小额捐助：  
-
-![alipay](https://cloud.githubusercontent.com/assets/10941075/7852926/97495456-0538-11e5-83bb-aa2711d92123.png)  
-
-
-如需商业合作，[请直接联系作者](https://github.com/cundi/Web.Development.with.Django.Cookbook/issues/3)。  
 
 # Django-Design-Patterns-and-Best-Practices
 中文名：《Django 设计模式与最佳实践》  
